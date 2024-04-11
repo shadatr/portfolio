@@ -14,8 +14,7 @@ function Work() {
         <HeroParallax products={products} />
       </Reveal>
       <div>
-      <div className="font-black py-10 text-[50px] text-lightPurple2">● projects</div>
-
+      <div className="font-black py-10 sm:mb-40 lg:mb-1 text-[50px] text-lightPurple2">● projects</div>
         <div className=" w-full flex flex-col lg:gap-20 sm:gap-80 items-center justify-center ">
           <Reveal>
             <Link

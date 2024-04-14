@@ -5,16 +5,14 @@ import { TypewriterEffect } from "./ui/typewriter-effect";
 const words = [
   { text: "An" },
   { text: "experienced" },
-  { text: "web2" },
-  { text: "and" },
-  { text: "web3" },
+  { text: "web" },
   { text: "developer.", className: "bg-lightPurple1" },
 ];
 
 const Home = () => {
   return (
-      <div id="home">
-    <Reveal className="flex flex-col pt-10 justify-center gap-5 h-[100vh] sm:pl-10">
+    <div id="home">
+      <Reveal className="flex flex-col pt-10 justify-center gap-5 h-[100vh] sm:pl-10">
         <span className="font-bold lg:text-md sm:text-xsm">
           Welcome to my portfolio website! I'm
         </span>
@@ -35,8 +33,8 @@ const Home = () => {
           React.js, Node.js, Next.js , CSS, Tailwind CSS, PostgreSQL,
           Supabase,MongoDB, web3, Redux, and Git.
         </div>
-    </Reveal>
-      </div>
+      </Reveal>
+    </div>
   );
 };
 

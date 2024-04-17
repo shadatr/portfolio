@@ -12,6 +12,7 @@ import { SiMongodb } from "react-icons/si";
 import { SiWeb3Dotjs } from "react-icons/si";
 import { SiRedux } from "react-icons/si";
 import { IoLogoCss3 } from "react-icons/io";
+import { FaRust } from "react-icons/fa6";
 
 import Reveal from "./Reveal";
 
@@ -39,6 +40,12 @@ const aboutMe = [
     description:
       "Proficient in Next.js framework for building server-rendered and statically-generated web applications, utilizing features like SSR and automatic code splitting.",
       icon: <TbBrandNextjs size={35}/>,
+  },
+  {
+    technology: "Rust",
+    description:
+      "Experienced in Rust, enhancing code quality and maintainability.",
+    icon: <FaRust size={35}/>,
   },
   {
     technology: "CSS & Tailwind CSS",

@@ -184,7 +184,7 @@ function Work() {
               <div className="flex lg:flex-row sm:flex-col gap-10  basis-full p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:w-[50rem]  sm:w-[300px]">
                 <div className=" lg:w-[50%]">
                   <h3 className="max-w-xs !pb-2 !m-0 font-bold text-md text-base text-slate-100">
-                    PhoenixTech
+                    Solana twitter
                   </h3>
                   <Image
                     height="100"
@@ -202,6 +202,9 @@ function Work() {
                   development and blockchain integration..
                   <p className="text-lightPurple2 font-bold">Technologies:</p>
                   <span className="grid  grid-cols-2 gap-2">
+                  <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      Rust
+                    </p>
                     <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
                       React
                     </p>

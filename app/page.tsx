@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import Reveal from "@/components/Reveal";
 import LabelBottomNavigation from "@/components/hearder";
 import Home from "@/components/Home";
 import About from "@/components/About";

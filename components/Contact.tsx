@@ -45,7 +45,7 @@ const Contact = () => {
           </Link>
         </div>
         <div>shadadaab@gmail.com</div>
-        <div>+905346055578</div>
+        <div></div>
         <div className="font-bold">
           <PlaceIcon />
           Turkey, Istanbul

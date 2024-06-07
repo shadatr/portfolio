@@ -16,7 +16,7 @@ const Home = () => {
         <span className="font-bold lg:text-md sm:text-xsm">
           Welcome to my portfolio website! I'm
         </span>
-        <div className="lg:text-[80px] sm:text-[40px] w-[450px] text-secondary font-black items-center justify-center flex flex-row">
+        <div className="lg:text-[80px]  sm:text-[40px] lg:w-[450px] sm:w-full text-secondary font-black items-center justify-center flex flex-row">
           <div className="flex">
             <p>Shada Daab </p>
             <p className="text-lightPurple1"> ,</p>

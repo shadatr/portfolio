@@ -92,7 +92,7 @@ const aboutMe = [
 const About = () => {
   return (
     <Reveal>
-      <div className="font-black py-10 text-[50px] text-lightPurple2">
+      <div className="font-black py-10 lg:text-[50px] sm:text-[30px] text-lightPurple2">
         ● Skills
       </div>
       <div
@@ -100,7 +100,7 @@ const About = () => {
         id="about"
       >
         {aboutMe.map((item) => (
-          <BackgroundGradient className="rounded-[22px] bg-darkPurple p-5 h-[260px] flex-col flex items-center text-center gap-2">
+          <BackgroundGradient className="rounded-[22px] bg-darkPurple lg:p-5 sm:p-2 lg:h-[260px] sm:h-[180px] flex-col flex items-center text-center gap-2">
             {item.icon}
             <span className="font-black lg:text-md sm:text-sm">
               {item.technology}

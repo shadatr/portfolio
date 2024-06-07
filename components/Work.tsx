@@ -9,12 +9,12 @@ import Reveal from "./Reveal";
 function Work() {
   return (
     <div id="work">
-      <div className="font-black py-10 text-[50px] text-lightPurple2">● Work</div>
+      <div className="font-black py-10 lg:text-[50px] sm:text-[30px] text-lightPurple2">● Work</div>
       <Reveal>
         <HeroParallax products={products} />
       </Reveal>
       <div>
-      <div className="font-black py-10 sm:mb-40 lg:mb-1 text-[50px] text-lightPurple2">● projects</div>
+      <div className="font-black py-10 sm:mb-40 lg:mb-1 lg:text-[50px] sm:text-[30px] text-lightPurple2">● projects</div>
         <div className=" w-full flex flex-col lg:gap-20 sm:gap-80 items-center justify-center ">
           <Reveal>
             <Link

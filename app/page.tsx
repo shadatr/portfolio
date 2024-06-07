@@ -11,9 +11,9 @@ import Contact from "@/components/Contact";
 function Page() {
   return (
     <div className="bg-darkPurple text-secondary ">
-      <div className="w-screen flex justify-center items-center">
+      {/* <div className="w-screen flex justify-center items-center">
       <LabelBottomNavigation/>
-      </div>
+      </div> */}
       <TracingBeam className="h-full">
         <Home/>
         <About/>

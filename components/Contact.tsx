@@ -12,7 +12,7 @@ const Contact = () => {
         className="flex flex-col w-full justify-center items-center h-screen gap-3 lg:text-md sm:text-sm"
         id="contact"
       >
-        <div className="lg:text-[70px] sm:text-[50px] font-black flex">
+        <div className=" lg:text-[70px] sm:text-[40px] font-black flex">
           Contact<p className="text-lightPurple2">.</p>
         </div>
         <div className="font-bold text-center lg:text-lg sm:text-sm">
@@ -22,7 +22,7 @@ const Contact = () => {
         <div className="text-lightPurple2 lg:text-sm sm:text-xsm">
           Contact me through Email or social media to discuss more!
         </div>
-        <div className="flex gap-10 pb-4">
+        <div className="lg:flex sm:hidden gap-10 pb-4">
           <Link href="https://github.com/shadatr">
             <GitHubIcon sx={{ fontSize: 52 }} />
           </Link>
@@ -31,6 +31,17 @@ const Contact = () => {
           </Link>
           <Link href="https://twitter.com/itsshdab">
             <XIcon sx={{ fontSize: 52 }} />
+          </Link>
+        </div>
+        <div className="sm:flex lg:hidden gap-10 pb-4">
+          <Link href="https://github.com/shadatr">
+            <GitHubIcon sx={{ fontSize: 30 }} />
+          </Link>
+          <Link href="https://www.linkedin.com/in/shada-tareq-990451266/">
+            <LinkedInIcon sx={{ fontSize: 30 }} />
+          </Link>
+          <Link href="https://twitter.com/itsshdab">
+            <XIcon sx={{ fontSize: 30 }} />
           </Link>
         </div>
         <div>shadadaab@gmail.com</div>

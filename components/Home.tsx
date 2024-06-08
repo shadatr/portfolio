@@ -5,6 +5,8 @@ import { TypewriterEffect } from "./ui/typewriter-effect";
 const words = [
   { text: "An" },
   { text: "experienced" },
+  { text: "blockchain" },
+  { text: "and" },
   { text: "web" },
   { text: "developer.", className: "bg-lightPurple1" },
 ];
@@ -29,7 +31,7 @@ const Home = () => {
           />
         </div>
         <div className="lg:text-[18px] sm:text-[12px] pt-5 text-lightPurple2">
-          With years of experience, I specialize in JavaScript, TypeScript,
+          With years of experience, I specialize in JavaScript, TypeScript, Rust, Solana,
           React.js, Node.js, Next.js , CSS, Tailwind CSS, PostgreSQL,
           Supabase,MongoDB, web3, Redux, and Git.
         </div>

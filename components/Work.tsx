@@ -71,54 +71,6 @@ function Work() {
           </Reveal>
           <Reveal>
             <Link
-              href="https://github.com/shadatr/solana-nft-marketplace"
-              className="font-bold text-lightPurple2 underline sm:hidden lg:flex"
-            >
-              Github repositpries for SolMint
-            </Link>
-
-            <PinContainer
-              title="solana-nft-marketplace-theta.vercel.app"
-              href="https://solana-nft-marketplace-theta.vercel.app/"
-            >
-              <div className="flex lg:flex-row sm:flex-col gap-10  basis-full p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:w-[50rem]  sm:w-[300px]">
-                <div className=" lg:w-[50%]">
-                  <h3 className="max-w-xs !pb-2 !m-0 font-bold text-md text-base text-slate-100">
-                    SolMint
-                  </h3>
-                  <Image
-                    height="100"
-                    width="1000"
-                    className="w-full h-auto"
-                    src="/solmint2.png"
-                    alt="image"
-                  />
-                </div>
-                <div className="text-secondary lg:w-[50%] lg:text-sm sm:text-[14px]">
-                Developed an innovative NFT marketplace on the Solana blockchain, leveraging the power of Candy Machine for minting and managing NFTs. The platform is built with a modern tech stack, including TypeScript and React, ensuring a seamless and dynamic user experience.                  <p className="text-lightPurple2 font-bold">Technologies:</p>
-                  <span className="grid  grid-cols-2 gap-2">
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      React
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      TypeScript
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      Tailwind CSS
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center lg:text-sm sm:text-[12px]">
-                      Metaplex CandyMachine
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      Next.js
-                    </p>
-                  </span>
-                </div>
-              </div>
-            </PinContainer>
-          </Reveal>
-          <Reveal>
-            <Link
               href="https://github.com/shadatr/phoenix-tech"
               className="font-bold text-lightPurple2 underline sm:hidden lg:flex"
             >
@@ -276,8 +228,8 @@ export default Work;
 
 export const products = [
   {
-    title: "SolMint",
-    thumbnail: "/solmint2.png",
+    title: "bookItNow",
+    thumbnail: "/bookItNow2.png",
   },
   {
     title: "bookItNow",
@@ -314,8 +266,8 @@ export const products = [
     thumbnail: "/tech2.png",
   },
   {
-    title: "SolMint",
-    thumbnail: "/solmint1.png",
+    title: "PheoenixTech",
+    thumbnail: "/tech3.png",
   },
   {
     title: "PheoenixTech",

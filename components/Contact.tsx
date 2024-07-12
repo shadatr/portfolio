@@ -37,7 +37,7 @@ const Contact = () => {
           <Link href="https://github.com/shadatr">
             <GitHubIcon sx={{ fontSize: 30 }} />
           </Link>
-          <Link href="https://www.linkedin.com/in/shada-tareq-990451266/">
+          <Link href="https://www.linkedin.com/in/shada-daab-990451266/">
             <LinkedInIcon sx={{ fontSize: 30 }} />
           </Link>
           <Link href="https://twitter.com/itsshdab">

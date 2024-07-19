@@ -5,6 +5,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import Link from "next/link";
 import PlaceIcon from "@mui/icons-material/Place";
 import Reveal from "./Reveal";
+
 const Contact = () => {
   return (
     <Reveal>

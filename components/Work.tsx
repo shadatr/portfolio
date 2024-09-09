@@ -9,12 +9,16 @@ import Reveal from "./Reveal";
 function Work() {
   return (
     <div id="work">
-      <div className="font-black py-10 lg:text-[50px] sm:text-[30px] text-lightPurple2">● Work</div>
+      <div className="font-black py-10 lg:text-[50px] sm:text-[30px] text-lightPurple2">
+        ● Work
+      </div>
       <Reveal>
         <HeroParallax products={products} />
       </Reveal>
       <div>
-      <div className="font-black py-10 sm:mb-40 lg:mb-1 lg:text-[50px] sm:text-[30px] text-lightPurple2">● projects</div>
+        <div className="font-black py-10 sm:mb-40 lg:mb-1 lg:text-[50px] sm:text-[30px] text-lightPurple2">
+          ● projects
+        </div>
         <div className=" w-full flex flex-col lg:gap-20 sm:gap-80 items-center justify-center ">
           <Reveal>
             <Link
@@ -63,6 +67,65 @@ function Work() {
                     </p>
                     <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
                       Next.js{" "}
+                    </p>
+                  </span>
+                </div>
+              </div>
+            </PinContainer>
+          </Reveal>
+          <Reveal>
+            <Link
+              href="https://github.com/shadatr/solana-twitter"
+              className="font-bold text-lightPurple2 underline sm:hidden lg:flex"
+            >
+              Github repositpries for University Mangament System
+            </Link>
+            <PinContainer
+              title="university-managment-system-hzdr.vercel.app"
+              href="https://university-managment-system-hzdr.vercel.app/"
+            >
+              <div className="flex lg:flex-row sm:flex-col gap-10  basis-full p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:w-[50rem]  sm:w-[300px]">
+                <div className=" lg:w-[50%]">
+                  <h3 className="max-w-xs !pb-2 !m-0 font-bold text-md text-base text-slate-100">
+                    University Mangament System
+                  </h3>
+                  <Image
+                    height="100"
+                    width="1000"
+                    className="w-full h-auto"
+                    src="/ums1.png"
+                    alt="image"
+                  />
+                </div>
+                <div className="text-secondary lg:w-[50%] lg:text-sm sm:text-[14px]">
+                  A University Management System allows administrators to manage
+                  courses, teachers, and students efficiently. Teachers can
+                  track student performance and upload grades, while students
+                  can register for courses, view schedules, and check their
+                  progress. It simplifies university operations and
+                  communication for all users.
+                  <p className="text-lightPurple2 font-bold">Technologies:</p>
+                  <span className="grid  grid-cols-2 gap-2">
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      Java
+                    </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      Spring boot
+                    </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      Next.js
+                    </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      React
+                    </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      TypeScript
+                    </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      Tailwind CSS
+                    </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      Nextauth
                     </p>
                   </span>
                 </div>
@@ -129,7 +192,7 @@ function Work() {
               title="media-mingle-eight.vercel.app"
               href="https://media-mingle-eight.vercel.app/"
             >
-             <div className="flex lg:flex-row sm:flex-col gap-10  basis-full p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:w-[50rem]  sm:w-[300px]">
+              <div className="flex lg:flex-row sm:flex-col gap-10  basis-full p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:w-[50rem]  sm:w-[300px]">
                 <div className=" lg:w-[50%]">
                   <h3 className="max-w-xs !pb-2 !m-0 font-bold text-md text-base text-slate-100">
                     MediaMingle
@@ -170,55 +233,7 @@ function Work() {
               </div>
             </PinContainer>
           </Reveal>
-          <Reveal>
-            <Link
-              href="https://github.com/shadatr/solana-twitter"
-              className="font-bold text-lightPurple2 underline sm:hidden lg:flex"
-            >
-              Github repositpries for PhoenixTech
-            </Link>
-            <PinContainer
-              title="solana-twitter-five.vercel.app"
-              href="https://solana-twitter-five.vercel.app/"
-            >
-              <div className="flex lg:flex-row sm:flex-col gap-10  basis-full p-4 tracking-tight text-slate-100/50 sm:basis-1/2 lg:w-[50rem]  sm:w-[300px]">
-                <div className=" lg:w-[50%]">
-                  <h3 className="max-w-xs !pb-2 !m-0 font-bold text-md text-base text-slate-100">
-                    Solana twitter
-                  </h3>
-                  <Image
-                    height="100"
-                    width="1000"
-                    className="w-full h-auto"
-                    src="/solana.png"
-                    alt="image"
-                  />
-                </div>
-                <div className="text-secondary lg:w-[50%] lg:text-sm sm:text-[14px]">
-                  Solana Twitter is my project utilizing the Solana blockchain.
-                  It allows users to tweet, search for users, tags, and topics
-                  securely through Solana wallet authentication. Solana Twitter
-                  demonstrates my skills in decentralized application
-                  development and blockchain integration..
-                  <p className="text-lightPurple2 font-bold">Technologies:</p>
-                  <span className="grid  grid-cols-2 gap-2">
-                  <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      Rust
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      React
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      TypeScript
-                    </p>
-                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
-                      Tailwind CSS
-                    </p>
-                  </span>
-                </div>
-              </div>
-            </PinContainer>
-          </Reveal>
+
         </div>
       </div>
     </div>
@@ -266,8 +281,8 @@ export const products = [
     thumbnail: "/tech2.png",
   },
   {
-    title: "PheoenixTech",
-    thumbnail: "/tech3.png",
+    title: "UMS",
+    thumbnail: "/ums1.png",
   },
   {
     title: "PheoenixTech",

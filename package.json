@@ -13,7 +13,6 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.15",
     "@mui/material": "^5.15.15",
-    "@next/swc-darwin-arm64": "^14.2.8",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.27",
     "mini-svg-data-uri": "^1.4.4",

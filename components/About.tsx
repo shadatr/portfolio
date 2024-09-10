@@ -99,8 +99,8 @@ const About = () => {
         className="grid lg:grid-cols-3 sm:grid-cols-2 gap-4 items-center lg:p-5 sm:p-2"
         id="about"
       >
-        {aboutMe.map((item) => (
-          <BackgroundGradient className="rounded-[22px] bg-darkPurple lg:p-5 sm:p-2 lg:h-[260px] sm:h-[180px] flex-col flex items-center text-center gap-2">
+        {aboutMe.map((item, index) => (
+          <BackgroundGradient key={index} className="rounded-[22px] bg-darkPurple lg:p-5 sm:p-2 lg:h-[260px] sm:h-[180px] flex-col flex items-center text-center gap-2">
             {item.icon}
             <span className="font-black lg:text-md sm:text-sm">
               {item.technology}

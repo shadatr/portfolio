@@ -127,6 +127,9 @@ function Work() {
                     <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
                       Nextauth
                     </p>
+                    <p className="bg-lightPurple1 p-1 rounded-lg font-bold flex justify-center">
+                      PostgreSQL
+                    </p>
                   </span>
                 </div>
               </div>

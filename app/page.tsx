@@ -1,27 +1,28 @@
 "use client";
+
 import React from "react";
-import { TracingBeam } from "@/components/ui/tracing-beam";
-import LabelBottomNavigation from "@/components/hearder";
-import Home from "@/components/Home";
-import About from "@/components/About";
-import Work from "@/components/Work";
-import Contact from "@/components/Contact";
+import Hero from "@/components/hero/Hero";
+import About from "@/components/sections/About";
+import Stats from "@/components/sections/Stats";
+import Skills from "@/components/sections/Skills";
+import NowRunning from "@/components/sections/NowRunning";
+import CareerJourney from "@/components/sections/CareerJourney";
+import Work from "@/components/sections/Work";
+import ProjectGallery from "@/components/sections/ProjectGallery";
+import Contact from "@/components/sections/Contact";
 
-
-function Page() {
+export default function Page() {
   return (
-    <div className="bg-darkPurple text-secondary ">
-      <div className="w-screen flex justify-center items-center">
-      <LabelBottomNavigation/>
-      </div>
-      <TracingBeam className="h-full">
-        <Home/>
-        <About/>
-        <Work/>
-        <Contact/>
-      </TracingBeam>
-    </div>
+    <main className="relative">
+      <Hero />
+      <Stats />
+      <About />
+      <Skills />
+      <NowRunning />
+      <CareerJourney />
+      <Work />
+      <ProjectGallery />
+      <Contact />
+    </main>
   );
 }
-
-export default Page;

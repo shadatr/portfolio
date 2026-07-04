@@ -8,8 +8,8 @@ import { cn } from "@/utils/cn";
 
 const ACCENT = {
   cyan: "text-cyan-neon",
-  violet: "text-violet-pop",
-  mint: "text-emerald-400",
+  violet: "text-cyan-glow",
+  mint: "text-text-high",
 } as const;
 
 export default function HorizontalLayout({ study }: { study: CaseStudy }) {
@@ -75,7 +75,7 @@ export default function HorizontalLayout({ study }: { study: CaseStudy }) {
                   </ul>
                 )}
               </div>
-              <Placeholder
+              <Placeholder fit="contain"
                 label={ch.placeholder.label}
                 filename={ch.placeholder.filename}
                 ratio={ch.placeholder.ratio || "video"}

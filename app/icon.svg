@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12151F"/>
+      <stop offset="1" stop-color="#0B0D14"/>
+    </linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9DB4FF"/>
+      <stop offset="0.55" stop-color="#8FD4F0"/>
+      <stop offset="1" stop-color="#FF7759"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7.5" fill="url(#bg)"/>
+  <!-- tiny stars — the worlds live inside the mark -->
+  <circle cx="7" cy="8" r="0.9" fill="#9DB4FF" opacity="0.85"/>
+  <circle cx="25.5" cy="24" r="0.7" fill="#FF7759" opacity="0.8"/>
+  <circle cx="24.5" cy="7.5" r="0.55" fill="#E8ECFA" opacity="0.6"/>
+  <!-- the S — one continuous stroke, round caps -->
+  <path d="M 21 11 C 21 8, 11 8, 11 12 C 11 16, 21 16, 21 20 C 21 24, 11 24, 11 21"
+        fill="none" stroke="url(#s)" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

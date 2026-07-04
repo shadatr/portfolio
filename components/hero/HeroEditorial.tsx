@@ -1,59 +1,111 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useReducedMotion,
+  MotionValue,
+} from "framer-motion";
 import Image from "next/image";
 import MagneticButton from "../ui-kit/MagneticButton";
 
-// Screenshots scattered across the FULL viewport — anchored as % so they
-// spread to every edge, then drift on cursor. Kept muted so the type leads.
-type CollageItem = {
+/* ============================================================================
+   HERO — the opening scene.
+   Real product shots hang in space as a floating deck: they surface one by
+   one from depth, breathe on a slow loop, tilt away from the cursor, and
+   sink upward as you scroll. In front, the headline rises line by line out
+   of masks. One paragraph, two buttons, nothing else.
+   ============================================================================ */
+
+type Shot = {
   src: string;
-  left: string; // viewport %
-  top: string; // viewport %
+  alt: string;
+  left: string;
+  top: string;
   rot: number;
-  depth: number; // 0-1, how much it drifts with the cursor
-  w: number; // base width
+  depth: number; // parallax multiplier
+  w: number; // max width px
+  float: number; // float loop duration (s)
+  mobile: boolean; // shown on small screens?
 };
 
-const COLLAGE: CollageItem[] = [
-  // Top band
-  { src: "/media1.png", left: "8%", top: "14%", rot: -8, depth: 0.4, w: 220 },
-  { src: "/solana.png", left: "42%", top: "6%", rot: 3, depth: 0.3, w: 180 },
-  { src: "/tech1.png", left: "78%", top: "12%", rot: 7, depth: 0.5, w: 240 },
-  // Middle band — slightly bigger so they peek behind the type
-  { src: "/bookItNow1.png", left: "3%", top: "44%", rot: -11, depth: 0.7, w: 260 },
-  { src: "/media2.png", left: "82%", top: "42%", rot: 6, depth: 0.55, w: 240 },
-  { src: "/solmint1.png", left: "18%", top: "62%", rot: 4, depth: 0.6, w: 210 },
-  { src: "/tech2.png", left: "68%", top: "66%", rot: -4, depth: 0.45, w: 230 },
-  // Bottom band
-  { src: "/ums1.png", left: "10%", top: "82%", rot: -6, depth: 0.55, w: 220 },
-  { src: "/media3.png", left: "45%", top: "86%", rot: 5, depth: 0.4, w: 200 },
-  { src: "/bookItNow2.png", left: "78%", top: "84%", rot: 8, depth: 0.5, w: 220 },
+const DECK: Shot[] = [
+  {
+    src: "/experience/shield/hero.png",
+    alt: "NanoShield alerts dashboard",
+    left: "2%",
+    top: "54%",
+    rot: -7,
+    depth: 0.9,
+    w: 360,
+    float: 7,
+    mobile: true,
+  },
+  {
+    src: "/tummie/hero.png",
+    alt: "Tummie landing page",
+    left: "68%",
+    top: "10%",
+    rot: 6,
+    depth: 0.6,
+    w: 330,
+    float: 8.5,
+    mobile: true,
+  },
+  {
+    src: "/lets-note/hero.png",
+    alt: "Let's Note AI dashboard",
+    left: "6%",
+    top: "10%",
+    rot: -4,
+    depth: 0.45,
+    w: 280,
+    float: 9.5,
+    mobile: false,
+  },
+  {
+    src: "/experience/flare/charts.png",
+    alt: "FLARE candlestick chart and orderbook",
+    left: "70%",
+    top: "60%",
+    rot: 5,
+    depth: 1.2,
+    w: 320,
+    float: 6,
+    mobile: false,
+  },
+];
+
+const LINES: { text: string; italic?: boolean }[] = [
+  { text: "Shada" },
+  { text: "Daab.", italic: true },
 ];
 
 export default function HeroEditorial() {
   const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  // Mouse parallax: subtle drift on cursor move
-  const mx = useSpring(0, { stiffness: 60, damping: 14 });
-  const my = useSpring(0, { stiffness: 60, damping: 14 });
+  // Cursor parallax — the deck leans away from the pointer.
+  const mx = useSpring(0, { stiffness: 50, damping: 16 });
+  const my = useSpring(0, { stiffness: 50, damping: 16 });
 
   function onMouseMove(e: React.MouseEvent) {
     const r = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
-    const nx = (e.clientX - r.left) / r.width - 0.5;
-    const ny = (e.clientY - r.top) / r.height - 0.5;
-    mx.set(nx * 40);
-    my.set(ny * 40);
+    mx.set(((e.clientX - r.left) / r.width - 0.5) * -44);
+    my.set(((e.clientY - r.top) / r.height - 0.5) * -32);
   }
 
-  // Big type slides up on scroll
-  const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
-  const collageOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  // Scroll: type drifts up slowly, deck sinks and fades a touch faster.
+  const titleY = useTransform(scrollYProgress, [0, 1], ["0%", "-30%"]);
+  const deckY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
+  const deckOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   return (
     <section
@@ -62,187 +114,188 @@ export default function HeroEditorial() {
       id="hero"
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink-base isolate"
     >
-      {/* Ambient layers */}
-      <div className="absolute inset-0 bg-grid-cyan [background-size:48px_48px] opacity-[0.12]" />
+      <div className="absolute inset-0 bg-pattern" />
       <div className="absolute inset-0 aurora pointer-events-none" />
-      <div className="absolute inset-0 beams pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.12),transparent_55%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.10),transparent_55%)] pointer-events-none" />
+      <div className="absolute inset-0 grain pointer-events-none" />
 
-      {/* Decorative crosshairs */}
-      <span className="crosshair top-24 left-10" />
-      <span className="crosshair top-24 right-10" />
-      <span className="crosshair bottom-10 left-10" />
-      <span className="crosshair bottom-10 right-10" />
-
-      {/* Collage — scattered images spread to every edge, drift with mouse */}
+      {/* The floating deck */}
       <motion.div
-        style={{ opacity: collageOpacity }}
+        style={{ y: deckY, opacity: deckOpacity }}
         className="pointer-events-none absolute inset-0"
+        aria-hidden
       >
-        {COLLAGE.map((c, i) => (
-          <CollageImage key={i} item={c} mx={mx} my={my} index={i} />
+        {DECK.map((shot, i) => (
+          <DeckCard key={shot.src} shot={shot} index={i} mx={mx} my={my} reduce={!!reduce} />
         ))}
       </motion.div>
 
-      {/* Muting layers — desaturate + darken the collage so type leads */}
-      <div className="pointer-events-none absolute inset-0 bg-ink-base/45 backdrop-blur-[2px]" />
-      <div className="pointer-events-none absolute inset-0 center-vignette" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-base/40 via-transparent to-ink-base/80" />
+      {/* Muting veils so the type always wins */}
+      <div className="pointer-events-none absolute inset-0 bg-ink-base/35 backdrop-blur-[1.5px]" />
+      <div className="pointer-events-none absolute inset-0 center-vignette-soft" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-base/30 via-transparent to-ink-base/85" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 pt-36 md:pt-48 pb-24 min-h-[100svh] flex flex-col justify-center">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pb-24 pt-36 md:px-10 md:pt-40">
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon mb-6"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mb-8 flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
         >
-          <span className="h-2 w-2 rounded-full bg-cyan-neon animate-pulse" />
-          Hi, I&apos;m Shada · software engineer · Istanbul
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inset-0 rounded-full bg-cyan-neon" />
+            <span className="absolute inset-0 animate-ping rounded-full bg-cyan-neon opacity-50" />
+          </span>
+          software engineer · Istanbul
         </motion.div>
 
+        {/* Headline — each line rises out of a mask */}
         <motion.h1
           style={{ y: titleY }}
-          className="will-change-transform font-display font-bold text-text-high leading-[0.86] tracking-[-0.03em] text-[72px] md:text-[148px] xl:text-[180px]"
+          className="will-change-transform font-display font-bold text-text-high leading-[0.88] tracking-[-0.03em] text-[68px] md:text-[140px] xl:text-[172px]"
         >
-          <SplitLine delay={0}>I ship</SplitLine>
-          <SplitLine delay={0.08}>software</SplitLine>
-          <SplitLine delay={0.16}>
-            <span className="font-editorial italic font-normal text-gradient-warm">
-              that ships
+          {LINES.map((line, i) => (
+            <span key={line.text} className="block overflow-hidden pb-[0.06em] -mb-[0.06em]">
+              <motion.span
+                initial={{ y: "112%", rotate: 4 }}
+                animate={{ y: "0%", rotate: 0 }}
+                transition={{
+                  duration: 1,
+                  delay: 0.25 + i * 0.13,
+                  ease: [0.22, 0.9, 0.24, 1],
+                }}
+                className="block origin-left"
+              >
+                {line.italic ? (
+                  <>
+                    <span className="font-editorial italic font-normal text-gradient-warm">
+                      {line.text.replace(".", "")}
+                    </span>
+                    {/* The full stop is alive */}
+                    <motion.span
+                      animate={reduce ? undefined : { scale: [1, 1.25, 1] }}
+                      transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+                      className="inline-block text-cyan-neon"
+                    >
+                      .
+                    </motion.span>
+                  </>
+                ) : (
+                  line.text
+                )}
+              </motion.span>
             </span>
-            <span className="text-cyan-neon">.</span>
-          </SplitLine>
+          ))}
         </motion.h1>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-10 items-end">
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-8 font-editorial text-xl italic text-text-mid md:mt-10 md:text-3xl"
+        >
+          From scratch to production — on whatever stack the problem needs.
+        </motion.p>
+
+        <div className="mt-10 grid grid-cols-1 items-end gap-10 md:mt-14 md:grid-cols-[1.4fr_1fr]">
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-md md:text-lg text-text-mid leading-relaxed max-w-2xl"
+            transition={{ duration: 0.6, delay: 0.85 }}
+            className="max-w-xl text-md leading-[1.8] text-text-mid md:text-lg"
           >
-            <span className="text-text-high">Software engineer</span> who
-            ships end-to-end. Three solo apps in production — an AI study
-            companion, a gut-health tracker, a Solana watcher — plus a
-            real-time RegTech system at Bull Teknoloji by day. I write Rust at
-            3am, <span className="text-text-high">design my own screens</span>,
-            and answer my own emails.
+            Engineer at Bull Teknoloji, working on real-time trading
+            infrastructure. Shipped{" "}
+            <span className="text-text-high">Tummie, Let&apos;s Note AI and
+            Moonshot</span>{" "}
+            solo — design to deployment.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.65 }}
-            className="flex flex-wrap gap-3 justify-start md:justify-end"
+            transition={{ duration: 0.5, delay: 1 }}
+            className="flex flex-wrap justify-start gap-3 md:justify-end"
           >
             <MagneticButton href="#work">
-              See the work <span aria-hidden>↗</span>
+              View work <span aria-hidden>↗</span>
             </MagneticButton>
             <MagneticButton href="#contact" variant="ghost">
-              Say hi
+              Get in touch
             </MagneticButton>
           </motion.div>
         </div>
-
-        {/* Bottom stat strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-16 md:mt-24 grid grid-cols-3 gap-6 max-w-4xl border-t border-cyan-neon/15 pt-6"
-        >
-          <Pill label="Focus" value="End-to-end builds" />
-          <Pill label="Stack" value="TS · Rust · Go" />
-          <Pill label="Latitude" value="41.0082° N" />
-        </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim flex flex-col items-center gap-2"
+        transition={{ delay: 1.4 }}
+        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim"
       >
         <span>scroll</span>
-        <span className="h-8 w-px bg-gradient-to-b from-cyan-neon/60 to-transparent animate-pulse" />
+        <motion.span
+          animate={reduce ? undefined : { height: [18, 32, 18] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px bg-gradient-to-b from-cyan-neon/70 to-transparent"
+        />
       </motion.div>
     </section>
   );
 }
 
-function Pill({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="font-mono text-xxsm uppercase tracking-[0.22em]">
-      <div className="text-text-dim">{label}</div>
-      <div className="text-text-high text-xsm mt-1 normal-case tracking-normal font-display font-semibold">
-        {value}
-      </div>
-    </div>
-  );
-}
-
-function SplitLine({
-  children,
-  delay,
-}: {
-  children: React.ReactNode;
-  delay: number;
-}) {
-  return (
-    <div className="overflow-hidden">
-      <motion.div
-        initial={{ y: "110%" }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.95, delay, ease: [0.2, 0.8, 0.2, 1] }}
-      >
-        {children}
-      </motion.div>
-    </div>
-  );
-}
-
-function CollageImage({
-  item,
+function DeckCard({
+  shot,
+  index,
   mx,
   my,
-  index,
+  reduce,
 }: {
-  item: CollageItem;
-  mx: any;
-  my: any;
+  shot: Shot;
   index: number;
+  mx: MotionValue<number>;
+  my: MotionValue<number>;
+  reduce: boolean;
 }) {
-  const tx = useTransform(mx, (v: number) => v * item.depth);
-  const ty = useTransform(my, (v: number) => v * item.depth);
+  const x = useTransform(mx, (v) => v * shot.depth);
+  const y = useTransform(my, (v) => v * shot.depth);
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9, rotate: item.rot }}
-      animate={{ opacity: 1, scale: 1, rotate: item.rot }}
-      transition={{ duration: 1.2, delay: 0.15 + index * 0.06, ease: [0.2, 0.8, 0.2, 1] }}
-      style={{
-        x: tx,
-        y: ty,
-        left: item.left,
-        top: item.top,
-        width: item.w,
-        translateX: "-50%",
-        translateY: "-50%",
-      }}
-      className="absolute aspect-[4/3] rounded-lg overflow-hidden ring-1 ring-cyan-neon/10 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.7)] hidden md:block"
+      style={{ left: shot.left, top: shot.top, x, y }}
+      className={`absolute ${shot.mobile ? "" : "hidden md:block"}`}
     >
-      <Image
-        src={item.src}
-        alt=""
-        fill
-        sizes="280px"
-        className="object-cover saturate-[0.35] contrast-[0.95] brightness-[0.75]"
-      />
-      {/* per-image wash that ties them all to the palette */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-neon/10 via-transparent to-violet-pop/10 mix-blend-overlay" />
-      <div className="absolute inset-0 bg-ink-base/30" />
+      {/* Entrance: surfaces from depth, then breathes forever */}
+      <motion.div
+        initial={{ opacity: 0, y: 90, scale: 0.82, rotate: shot.rot * 2, filter: "blur(10px)" }}
+        animate={{ opacity: 1, y: 0, scale: 1, rotate: shot.rot, filter: "blur(0px)" }}
+        transition={{
+          duration: 1.1,
+          delay: 0.55 + index * 0.16,
+          ease: [0.22, 0.9, 0.24, 1],
+        }}
+      >
+        <motion.div
+          animate={reduce ? undefined : { y: [0, -12, 0] }}
+          transition={{ duration: shot.float, repeat: Infinity, ease: "easeInOut" }}
+          className="overflow-hidden rounded-xl ring-1 ring-text-high/10 shadow-lift"
+          style={{ width: `clamp(150px, 24vw, ${shot.w}px)` }}
+        >
+          <div className="relative aspect-[16/10]">
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              fill
+              sizes="360px"
+              className="object-cover object-left-top saturate-[0.9]"
+              priority={index < 2}
+            />
+            {/* Soft top-light so the cards read as glass */}
+            <div className="absolute inset-0 bg-gradient-to-b from-text-high/[0.06] via-transparent to-ink-base/40" />
+          </div>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }

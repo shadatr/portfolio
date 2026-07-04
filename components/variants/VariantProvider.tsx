@@ -25,46 +25,80 @@ export type CaseStudyVariant =
 export type FontVariant = "editorial" | "clean" | "refined" | "tech";
 export type ThemeVariant =
   | "midnight"
-  | "embers"
-  | "forest"
+  | "obsidian"
+  | "paper"
   | "graphite"
-  | "paper";
+  // Legacy values kept for back-compat with existing localStorage entries.
+  | "embers"
+  | "forest";
 
-export const HERO_VARIANTS: { id: HeroVariant; label: string }[] = [
-  { id: "coverflow3d", label: "3D coverflow (drag)" },
-  { id: "editorial", label: "Editorial collage" },
-  { id: "drag3d", label: "Draggable 3D knot" },
-  { id: "morph-type", label: "Scroll-morph type" },
-  { id: "device", label: "Laptop + phone" },
-  { id: "particles", label: "Particle field" },
+export type BackgroundVariant =
+  | "none"
+  | "dots"
+  | "lines"
+  | "grid"
+  | "topo"
+  | "diagonal";
+
+/* Worlds — full-experience skins. Each swaps the color tokens AND mounts an
+   ambient animated layer. */
+export type WorldVariant = "space" | "liquid" | "deep" | "toybox";
+
+export const HERO_VARIANTS: { id: HeroVariant; label: string; hint: string }[] = [
+  { id: "editorial", label: "Editorial collage", hint: "screenshots drift behind big type" },
+  { id: "coverflow3d", label: "3D coverflow", hint: "drag a ring of screens in space" },
+  { id: "drag3d", label: "Draggable knot", hint: "an interactive 3D form" },
+  { id: "morph-type", label: "Scroll-morph type", hint: "typography reshapes on scroll" },
+  { id: "device", label: "Laptop + phone", hint: "product-shot style intro" },
+  { id: "particles", label: "Particle field", hint: "ambient point cloud" },
 ];
 
-export const PROJECT_VARIANTS: { id: ProjectsVariant; label: string }[] = [
-  { id: "bento", label: "Bento tilt grid" },
-  { id: "stacked", label: "Stacked cards" },
-  { id: "coverflow", label: "3D coverflow" },
+export const PROJECT_VARIANTS: { id: ProjectsVariant; label: string; hint: string }[] = [
+  { id: "bento", label: "Bento grid", hint: "asymmetric tilt grid" },
+  { id: "stacked", label: "Stacked cards", hint: "sticky scroll layering" },
+  { id: "coverflow", label: "3D coverflow", hint: "horizontal 3D feed" },
 ];
 
-export const CASE_STUDY_VARIANTS: { id: CaseStudyVariant; label: string }[] = [
-  { id: "blog-content", label: "Blog content" },
-  { id: "sticky", label: "Sticky-pin" },
-  { id: "horizontal", label: "Horizontal" },
-  { id: "alternating", label: "Alternating panels" },
+export const CASE_STUDY_VARIANTS: { id: CaseStudyVariant; label: string; hint: string }[] = [
+  { id: "blog-content", label: "Blog content", hint: "long-form reader" },
+  { id: "sticky", label: "Sticky-pin", hint: "pinned visual + scrolling notes" },
+  { id: "horizontal", label: "Horizontal", hint: "scroll sideways" },
+  { id: "alternating", label: "Alternating", hint: "left/right panels" },
 ];
 
-export const FONT_VARIANTS: { id: FontVariant; label: string }[] = [
-  { id: "editorial", label: "Editorial (Bricolage + Instrument)" },
-  { id: "clean", label: "Clean (Inter only)" },
-  { id: "refined", label: "Refined (Fraunces)" },
-  { id: "tech", label: "Mono-tech (Space Grotesk)" },
+export const FONT_VARIANTS: { id: FontVariant; label: string; hint: string }[] = [
+  { id: "editorial", label: "Editorial", hint: "Bricolage + Instrument Serif" },
+  { id: "refined", label: "Refined", hint: "Fraunces — print magazine" },
+  { id: "tech", label: "Mono-tech", hint: "Space Grotesk — engineered" },
+  { id: "clean", label: "Clean", hint: "Inter only — neutral" },
 ];
 
-export const THEME_VARIANTS: { id: ThemeVariant; label: string }[] = [
-  { id: "midnight", label: "Midnight · cyan + violet" },
-  { id: "embers", label: "Embers · orange + rose" },
-  { id: "forest", label: "Forest · mint + sky" },
-  { id: "graphite", label: "Graphite · achromatic" },
-  { id: "paper", label: "Paper · light editorial" },
+export const THEME_VARIANTS: { id: ThemeVariant; label: string; hint: string }[] = [
+  { id: "midnight", label: "Midnight Glass", hint: "night flight, observatory, calm tech" },
+  { id: "obsidian", label: "Obsidian & Bone", hint: "monograph, atelier, burnished amber" },
+  { id: "paper", label: "Atelier Paper", hint: "print magazine, editorial, museum" },
+  { id: "graphite", label: "Graphite", hint: "Swiss, brutalist-minimal, gallery" },
+];
+
+export const BACKGROUND_VARIANTS: { id: BackgroundVariant; label: string; hint: string }[] = [
+  { id: "none", label: "None", hint: "pure surface — just the theme" },
+  { id: "dots", label: "Dots", hint: "soft pinpoint grid, organic" },
+  { id: "lines", label: "Lines", hint: "horizontal rule, ledger feel" },
+  { id: "diagonal", label: "Diagonal", hint: "45° hairlines, editorial" },
+  { id: "topo", label: "Topo", hint: "repeating rings, atmospheric" },
+  { id: "grid", label: "Grid", hint: "the classic square mesh" },
+];
+
+export const WORLD_VARIANTS: {
+  id: WorldVariant;
+  label: string;
+  hint: string;
+  glyph: string;
+}[] = [
+  { id: "space", label: "Space", hint: "fly through a starfield", glyph: "✦" },
+  { id: "liquid", label: "Liquid", hint: "everything flows", glyph: "◉" },
+  { id: "deep", label: "Deep Dive", hint: "sink into the abyss", glyph: "≋" },
+  { id: "toybox", label: "Toy Box", hint: "soft & squishy", glyph: "◕" },
 ];
 
 type Variants = {
@@ -73,6 +107,8 @@ type Variants = {
   caseStudy: CaseStudyVariant;
   font: FontVariant;
   theme: ThemeVariant;
+  background: BackgroundVariant;
+  world: WorldVariant;
 };
 
 type Ctx = Variants & {
@@ -81,14 +117,18 @@ type Ctx = Variants & {
   setCaseStudy: (v: CaseStudyVariant) => void;
   setFont: (v: FontVariant) => void;
   setTheme: (v: ThemeVariant) => void;
+  setBackground: (v: BackgroundVariant) => void;
+  setWorld: (v: WorldVariant) => void;
 };
 
 const DEFAULTS: Variants = {
-  hero: "coverflow3d",
+  hero: "editorial",
   projects: "bento",
   caseStudy: "blog-content",
   font: "editorial",
   theme: "midnight",
+  background: "none",
+  world: "toybox",
 };
 
 const VariantContext = createContext<Ctx | null>(null);
@@ -104,16 +144,19 @@ export function VariantProvider({ children }: { children: ReactNode }) {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw);
-        // Migrate legacy theme names
         const legacyMap: Record<string, ThemeVariant> = {
           cyan: "midnight",
-          sunset: "embers",
-          mint: "forest",
+          sunset: "obsidian",
+          mint: "midnight",
           mono: "graphite",
+          embers: "obsidian",
+          forest: "midnight",
         };
         if (parsed.theme && legacyMap[parsed.theme]) {
           parsed.theme = legacyMap[parsed.theme];
         }
+        // ShadaOS world was retired — send stored sessions to the default.
+        if (parsed.world === "os") parsed.world = "toybox";
         setState({ ...DEFAULTS, ...parsed });
       }
     } catch {}
@@ -141,11 +184,12 @@ export function VariantProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     root.classList.remove(
       "theme-midnight",
+      "theme-obsidian",
+      "theme-paper",
+      "theme-graphite",
+      // legacy aliases
       "theme-embers",
       "theme-forest",
-      "theme-graphite",
-      "theme-paper",
-      // legacy names — clean up old localStorage values too
       "theme-cyan",
       "theme-sunset",
       "theme-mint",
@@ -154,6 +198,36 @@ export function VariantProvider({ children }: { children: ReactNode }) {
     root.classList.add(`theme-${state.theme}`);
   }, [state.theme]);
 
+  // Apply world as a class on <html> — world tokens are defined after theme
+  // tokens in globals.css, so the active world always wins the palette.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const root = document.documentElement;
+    root.classList.remove(
+      "world-space",
+      "world-liquid",
+      "world-deep",
+      "world-toybox",
+      "world-os" // retired
+    );
+    root.classList.add(`world-${state.world}`);
+  }, [state.world]);
+
+  // Apply background pattern as a class on <html> so the CSS vars resolve.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const root = document.documentElement;
+    root.classList.remove(
+      "pattern-none",
+      "pattern-dots",
+      "pattern-lines",
+      "pattern-grid",
+      "pattern-topo",
+      "pattern-diagonal"
+    );
+    root.classList.add(`pattern-${state.background}`);
+  }, [state.background]);
+
   const value: Ctx = {
     ...state,
     setHero: (v) => setState((s) => ({ ...s, hero: v })),
@@ -161,6 +235,8 @@ export function VariantProvider({ children }: { children: ReactNode }) {
     setCaseStudy: (v) => setState((s) => ({ ...s, caseStudy: v })),
     setFont: (v) => setState((s) => ({ ...s, font: v })),
     setTheme: (v) => setState((s) => ({ ...s, theme: v })),
+    setBackground: (v) => setState((s) => ({ ...s, background: v })),
+    setWorld: (v) => setState((s) => ({ ...s, world: v })),
   };
 
   return (

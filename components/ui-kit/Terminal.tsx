@@ -19,8 +19,8 @@ type Props = {
 const COLOR_MAP = {
   default: "text-text-high",
   cyan: "text-cyan-neon",
-  violet: "text-violet-pop",
-  green: "text-emerald-400",
+  violet: "text-text-high italic",
+  green: "text-cyan-glow",
   dim: "text-text-dim",
 };
 
@@ -63,9 +63,9 @@ export default function Terminal({
       {/* title bar */}
       <div className="flex items-center gap-2 px-4 py-2.5 border-b border-ink-line bg-ink-surface/60">
         <div className="flex gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-rose-400/60" />
-          <span className="h-2.5 w-2.5 rounded-full bg-text-mid/40" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
+          <span className="h-2.5 w-2.5 rounded-full bg-text-dim/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-text-dim/40" />
+          <span className="h-2.5 w-2.5 rounded-full bg-text-dim/40" />
         </div>
         <div className="text-xxsm text-text-dim tracking-wide ml-2">
           {title} — zsh

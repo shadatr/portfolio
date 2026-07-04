@@ -14,8 +14,8 @@ import { cn } from "@/utils/cn";
 
 const ACCENT = {
   cyan: "text-cyan-neon",
-  violet: "text-violet-pop",
-  mint: "text-emerald-400",
+  violet: "text-cyan-glow",
+  mint: "text-text-high",
 } as const;
 
 export default function CaseStudyView({ study }: { study: CaseStudy }) {

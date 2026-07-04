@@ -150,7 +150,7 @@ export const tummieStudy: CaseStudy = fromProject(lookup("tummie"), {
       placeholder: {
         label: "Adaptive logging flow",
         filename: "tummie/03-adaptive-logging.png",
-        ratio: "phone",
+        ratio: "square",
       },
     },
     {
@@ -167,7 +167,7 @@ export const tummieStudy: CaseStudy = fromProject(lookup("tummie"), {
       placeholder: {
         label: "Gut score & 7-day forecast",
         filename: "tummie/04-gut-score.png",
-        ratio: "phone",
+        ratio: "portrait",
       },
     },
     {
@@ -246,6 +246,89 @@ export const moonshotStudy: CaseStudy = fromProject(lookup("moonshot"), {
       },
     },
   ],
+  next: { name: "Aidventure", href: "/projects/aidventure" },
+});
+
+export const aidventureStudy: CaseStudy = fromProject(lookup("aidventure"), {
+  slug: "aidventure",
+  hero: {
+    label: "Aidventure — AI trip planner",
+    filename: "aidventure/hero.png",
+  },
+  summary:
+    "Aidventure is an AI-powered travel planner built as my graduation project with one teammate. You describe a trip in plain English; the system extracts destinations, dates, budget and travellers with spaCy NER, enriches the context with live weather and attractions, streams a Mistral-generated plan back token by token, and backs it with real flight and hotel data. My half of the system: authentication, the AI chat experience, entity extraction, the Mistral integration, plan management, and the dashboard.",
+  chapters: [
+    {
+      number: "01",
+      kicker: "The problem",
+      title: "Trip planning is twelve tabs pretending to be one decision.",
+      body:
+        "Researching destinations, comparing flights, evaluating hotels and assembling a coherent itinerary each live in different tools, and none of them know your preferences. Aidventure coordinates all of it behind one conversation: describe the trip, refine it over multiple turns, and the plan — flights, hotels, day-by-day schedule — assembles itself as you talk.",
+      bullets: [
+        "Natural-language planning: multi-turn chat that iteratively refines the plan.",
+        "Real data: Travelpayouts for flights, LiteAPI for hotels, Geoapify for attractions, OpenWeatherMap for weather.",
+        "A profile that learns — preferences and history feed future recommendations.",
+      ],
+      placeholder: {
+        label: "AI chat — trip planning conversation",
+        filename: "aidventure/01-chat.png",
+      },
+    },
+    {
+      number: "02",
+      kicker: "Architecture",
+      title: "Three tiers, one distinct AI layer.",
+      body:
+        "Next.js 14 frontend, FastAPI backend, PostgreSQL — with the AI layer as its own component inside the backend: spaCy for entity recognition, Mistral for generation, a context builder that injects live weather and points-of-interest into prompts, and a scikit-learn recommender for destination scoring. JWT auth on every protected request; async httpx for all outbound API calls.",
+      bullets: [
+        "FastAPI + Uvicorn for async request handling; SQLAlchemy 2.0 + Alembic for the data layer.",
+        "python-jose JWTs, bcrypt password hashing, keys never exposed to the client.",
+        "Docker Compose for local Postgres provisioning.",
+      ],
+      placeholder: {
+        label: "System architecture — three tiers + AI layer",
+        filename: "aidventure/02-architecture.png",
+      },
+    },
+    {
+      number: "03",
+      kicker: "The AI pipeline · my side",
+      title: "Message in — entities, context, streamed plan out.",
+      body:
+        "Every chat message runs through a pipeline I built: spaCy NER pulls out destination, dates, budget and travel style; the context service fetches current weather and attractions for the detected destination; Mistral generates the reply, streamed to the browser as Server-Sent Events so text appears as it's written. In parallel the message and learned preferences persist to Postgres, and a live plan-preview panel fills in as entities are extracted.",
+      bullets: [
+        "spaCy (en_core_web_sm) for entity extraction, stored as JSONB per message.",
+        "Mistral Small via the official SDK — prompts enriched with live external data.",
+        "SSE streaming end-to-end: the UI never blocks on generation.",
+      ],
+      placeholder: {
+        label: "AI chat data flow — NER → context → streamed reply",
+        filename: "aidventure/03-pipeline.png",
+      },
+    },
+    {
+      number: "04",
+      kicker: "Data model",
+      title: "Six tables, JSONB where the shape isn't fixed.",
+      body:
+        "The schema centers on users — credentials plus a learned preferences profile — with travel_plans, chat_history, flights, hotels, and a curated destinations catalogue around it. UUID primary keys throughout; JSONB columns hold the semi-structured parts: preferences, extracted entities, itineraries, destination metadata. Conversations link to the plans they helped create via a conversation id.",
+      placeholder: {
+        label: "Entity-relationship diagram",
+        filename: "aidventure/04-schema.png",
+      },
+    },
+    {
+      number: "05",
+      kicker: "Working in a team",
+      title: "Two people, clear ownership, one contract.",
+      body:
+        "This was a two-person build with clean boundaries: I owned authentication, the chat experience, NER, the Mistral integration, plan management and the dashboard; my teammate owned flight search, hotel search, destination exploration and the recommender. The backend foundation, database schema and design system were shared — which forced us to agree on API contracts early and keep them stable.",
+      placeholder: {
+        label: "Dashboard — plans, quick actions, upcoming trips",
+        filename: "aidventure/05-dashboard.png",
+      },
+    },
+  ],
   next: { name: "Let's Note AI", href: "/projects/lets-note" },
 });
 
@@ -258,7 +341,7 @@ export const bullStudy: CaseStudy = fromExperience(expLookup("bull"), {
   accent: "cyan",
   hero: {
     label: "Bull Teknoloji — NanoShield & FLARE",
-    filename: "experience/bull-hero.png",
+    filename: "experience/shield/orders.png",
   },
   summary:
     "I joined Bull Teknoloji as a software engineer in December 2024 and work across two flagship platforms: NanoShield — a real-time trading risk management system built around an FPGA core — which I lead end-to-end, and FLARE — a low-latency trading & reporting platform where I rebuilt the data path from Next.js to Go after the single-threaded Node.js event loop got buried by high-frequency market feeds.",
@@ -277,8 +360,8 @@ export const bullStudy: CaseStudy = fromExperience(expLookup("bull"), {
         "Result: charts stay live under production load and the UI thread never blocks on data work.",
       ],
       placeholder: {
-        label: "Before / after — Node event loop vs Go goroutines",
-        filename: "experience/bull-01-migration.png",
+        label: "The firehose — live ITCH message log & orderbook state",
+        filename: "experience/flare/messages.png",
       },
     },
     {
@@ -293,8 +376,8 @@ export const bullStudy: CaseStudy = fromExperience(expLookup("bull"), {
         "Frontend: lightweight-charts (TradingView), ECharts, drag-and-drop layouts, saved filter groups, CSV export.",
       ],
       placeholder: {
-        label: "FLARE — dashboard hero",
-        filename: "experience/bull-02-flare.png",
+        label: "FLARE — live time & sales",
+        filename: "experience/flare/charts.png",
       },
     },
     {
@@ -311,26 +394,26 @@ export const bullStudy: CaseStudy = fromExperience(expLookup("bull"), {
         "Entity hierarchy: Instruments → AccountGroup → Account → User, each with their own limit types as PostgreSQL composite columns.",
       ],
       placeholder: {
-        label: "NanoShield — dashboard & alerts",
-        filename: "experience/bull-03-nanoshield.png",
+        label: "NanoShield — single-order checks & dynamic price limits",
+        filename: "experience/shield/limits.png",
       },
     },
     {
       number: "04",
-      kicker: "Problem-solving · the OOM I almost owned",
-      title: "A 19 GB node process got killed. I had to prove it wasn't us.",
+      kicker: "Problem-solving · query performance",
+      title: "From around a second to ~20 ms.",
       body:
-        "One afternoon the kernel killed a 19 GB `node` process on the Shield server. The first instinct on a team is to blame the Next.js service — it's the obvious node process. I wrote up an incident investigation: pulled `journalctl` for the window, audited service memory after recovery, checked socket counts, and looked for files modified at `14:19:37`. Two files lined up: `vivado_lab.log` and `vivado_lab.jou` — modified the same minute as the kill. Vivado (Xilinx FPGA tooling) was running on the same box.",
+        "Risk dashboards are only as real-time as their slowest query. Some of the hot endpoints were taking on the order of a second under production data volumes — fine in a demo, unusable on a trading floor. I profiled the slow paths, read the query plans, and fixed the shape of the problem before reaching for caching: the right indexes, the right filter order, fewer round trips, less over-fetching.",
       bullets: [
-        "Inspected steady-state UI processes: ~100 MB RSS. No persistent leak.",
-        "Verified socket counts (`ss -tanp | grep :3000`) — 63, normal for the workload.",
-        "Time-correlated `find -newermt` to surface what changed in the OOM window.",
-        "Wrote a precise message to the FPGA team with the exact commands they could run to confirm. Added systemd `MemoryMax` limits + a memory-watch logger so the next time we'd have a smoking gun.",
-        "Conclusion: strong evidence the OOM was an FPGA toolchain spike, not the UI. Wrote it up in a 12-page postmortem so the decision was reproducible.",
+        "Profiled with `EXPLAIN ANALYZE` against production-scale data, not dev fixtures.",
+        "Added composite indexes matched to the actual filter + sort patterns of the dashboards.",
+        "Cut over-fetching — select only the columns the view needs, paginate the rest.",
+        "Collapsed N+1 patterns into single queries with joins and aggregates.",
+        "Measured before and after on every change — the hot paths went from ~1 s to ~20 ms.",
       ],
       placeholder: {
-        label: "OOM postmortem — timeline + evidence",
-        filename: "experience/bull-04-postmortem.png",
+        label: "Query optimization — before / after",
+        filename: "experience/shield/queries.png",
       },
     },
     {
@@ -338,10 +421,10 @@ export const bullStudy: CaseStudy = fromExperience(expLookup("bull"), {
       kicker: "How I work here",
       title: "Cross-functional, document-first.",
       body:
-        "Hardware engineers, quants, and designers all sit at the same table. The product moves fast because we write design docs first — RBAC, alerts architecture, position checks, limits page, OOM postmortem — and code second. Most of my value here is being the person who can talk across all three teams and translate intent into a system contract.",
+        "Hardware engineers, quants, and designers all sit at the same table. The product moves fast because we write design docs first — RBAC, alerts architecture, position checks, limits page, performance notes — and code second. Most of my value here is being the person who can talk across all three teams and translate intent into a system contract.",
       placeholder: {
         label: "Design docs — RBAC, alerts, limits, position checks",
-        filename: "experience/bull-05-docs.png",
+        filename: "experience/shield/docs.png",
       },
     },
   ],
@@ -404,6 +487,7 @@ export const studies = {
   "lets-note": letsNoteStudy,
   tummie: tummieStudy,
   moonshot: moonshotStudy,
+  aidventure: aidventureStudy,
   bull: bullStudy,
   oktan: oktanStudy,
 };

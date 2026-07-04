@@ -9,8 +9,8 @@ import { cn } from "@/utils/cn";
 
 const ACCENT: Record<Project["accent"], { text: string; bg: string }> = {
   cyan: { text: "text-cyan-neon", bg: "bg-cyan-neon" },
-  violet: { text: "text-violet-pop", bg: "bg-violet-pop" },
-  mint: { text: "text-emerald-400", bg: "bg-emerald-400" },
+  violet: { text: "text-cyan-glow", bg: "bg-cyan-glow" },
+  mint: { text: "text-text-high", bg: "bg-text-high" },
 };
 
 export default function ProjectsCoverflow() {
@@ -58,7 +58,7 @@ export default function ProjectsCoverflow() {
             >
               <Placeholder
                 label={p.name}
-                filename={`featured/${p.slug}-hero.png`}
+                filename={`${p.slug}/hero.png`}
                 ratio="video"
                 accent={p.accent}
                 scanlines={false}

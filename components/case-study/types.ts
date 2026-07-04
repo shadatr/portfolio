@@ -51,6 +51,7 @@ export function fromProject(p: Project, study: Omit<CaseStudy, "meta" | "next"> 
       year: p.year,
       stack: p.stack,
       accent: p.accent,
+      links: p.external ? [p.external] : undefined,
       ...(study.meta || {}),
     },
     hero: study.hero,

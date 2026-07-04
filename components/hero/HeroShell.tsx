@@ -10,9 +10,8 @@ export function HeroFrame({ children }: { children: React.ReactNode }) {
       id="hero"
       className="relative min-h-screen w-full overflow-hidden bg-ink-base"
     >
-      <div className="absolute inset-0 bg-grid-cyan [background-size:42px_42px] opacity-30" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.18),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.12),transparent_55%)]" />
+      <div className="absolute inset-0 bg-pattern" />
+      <div className="absolute inset-0 aurora pointer-events-none" />
       <div className="relative z-10">{children}</div>
     </section>
   );

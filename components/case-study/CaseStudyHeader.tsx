@@ -8,9 +8,9 @@ import Placeholder from "../ui-kit/Placeholder";
 import { cn } from "@/utils/cn";
 
 const ACCENT = {
-  cyan: { text: "text-cyan-neon", border: "border-cyan-neon/30" },
-  violet: { text: "text-violet-pop", border: "border-violet-pop/30" },
-  mint: { text: "text-emerald-400", border: "border-emerald-400/30" },
+  cyan: { text: "text-cyan-neon", border: "border-text-high/15" },
+  violet: { text: "text-cyan-glow", border: "border-text-high/15" },
+  mint: { text: "text-text-high", border: "border-text-high/15" },
 } as const;
 
 export default function CaseStudyHeader({ study }: { study: CaseStudy }) {
@@ -18,7 +18,7 @@ export default function CaseStudyHeader({ study }: { study: CaseStudy }) {
 
   return (
     <header className="relative pt-28 md:pt-40 pb-12 md:pb-20 overflow-hidden">
-      <div className="absolute inset-0 bg-grid-cyan [background-size:42px_42px] opacity-20" />
+      <div className="absolute inset-0 bg-pattern opacity-60" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.16),transparent_55%)]" />
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-10">
@@ -63,6 +63,28 @@ export default function CaseStudyHeader({ study }: { study: CaseStudy }) {
           {study.meta.tagline}
         </motion.p>
 
+        {study.meta.links && study.meta.links.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            className="mt-6 flex flex-wrap gap-3"
+          >
+            {study.meta.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--accent-primary)/0.12)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[rgb(var(--accent-glow))] ring-1 ring-[rgb(var(--accent-primary)/0.35)] transition-colors hover:bg-[rgb(var(--accent-primary)/0.2)]"
+              >
+                {l.label} <span aria-hidden>↗</span>
+              </a>
+            ))}
+          </motion.div>
+        )}
+
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
           <Fact label="Role" value={study.meta.role} />
           <Fact
@@ -82,7 +104,7 @@ export default function CaseStudyHeader({ study }: { study: CaseStudy }) {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mt-10"
         >
-          <Placeholder
+          <Placeholder fit="contain"
             label={study.hero.label}
             filename={study.hero.filename}
             ratio="wide"

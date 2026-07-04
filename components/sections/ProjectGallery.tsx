@@ -167,7 +167,7 @@ function Card({
       style={{ x: translate }}
       whileHover={{ y: -20 }}
       key={shot.title}
-      className="group/product h-72 md:h-96 w-[22rem] md:w-[30rem] relative flex-shrink-0 rounded-xl overflow-hidden ring-1 ring-cyan-neon/15 bg-ink-surface/40 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.75)]"
+      className="group/product h-72 md:h-96 w-[22rem] md:w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden ring-1 ring-text-high/[0.08] bg-ink-surface/40 shadow-lift"
     >
       <span className="block group-hover/product:shadow-2xl">
         <Image

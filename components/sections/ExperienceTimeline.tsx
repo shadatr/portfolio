@@ -33,7 +33,7 @@ export default function ExperienceTimeline() {
           {/* progress line */}
           <motion.div
             style={{ height: lineHeight }}
-            className="absolute left-3 md:left-7 top-0 w-px bg-gradient-to-b from-cyan-neon via-cyan-neon to-violet-pop"
+            className="absolute left-3 md:left-7 top-0 w-px bg-gradient-to-b from-cyan-neon via-cyan-neon to-cyan-glow"
           />
 
           <div className="flex flex-col gap-16 md:gap-24">

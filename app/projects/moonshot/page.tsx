@@ -10,10 +10,10 @@ export default function Page() {
     <>
       <CaseStudyView study={moonshotStudy} />
       <section className="relative py-24 md:py-32 border-t border-ink-line overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(52,211,153,0.06),transparent_55%)]" />
+        <div className="absolute inset-0 grain pointer-events-none" />
         <div className="relative mx-auto max-w-4xl px-6 md:px-10">
-          <div className="font-mono text-xxsm uppercase tracking-[0.22em] text-emerald-400 mb-3 flex items-center gap-3">
-            <span className="h-px w-8 bg-emerald-400/60" /> Live · in production
+          <div className="font-mono text-xxsm uppercase tracking-[0.22em] text-cyan-neon mb-3 flex items-center gap-3">
+            <span className="h-px w-8 bg-cyan-neon/60" /> Live · in production
           </div>
           <h3 className="font-display font-bold text-text-high text-3xl md:text-5xl tracking-tight mb-8">
             What it actually looks like.

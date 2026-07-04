@@ -45,7 +45,7 @@ export default function SectionHeading({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, delay: 0.05 }}
-        className="font-display font-bold text-text-high text-[44px] md:text-[80px] leading-[0.95] tracking-[-0.02em]"
+        className="font-display font-bold text-text-high text-[44px] md:text-[80px] leading-[0.95] tracking-[-0.02em] [text-wrap:balance]"
       >
         {parts ? (
           <>

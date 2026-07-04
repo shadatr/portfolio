@@ -165,22 +165,22 @@ export default function HeroCoverflow3D() {
       id="hero"
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink-base isolate"
     >
-      {/* Ambient */}
-      <div className="absolute inset-0 bg-grid-cyan [background-size:48px_48px] opacity-[0.10]" />
-      <div className="absolute inset-0 aurora opacity-80 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.10),transparent_55%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.10),transparent_55%)] pointer-events-none" />
+      {/* Ambient — one hairline grid + one soft aurora, theme-driven */}
+      <div className="absolute inset-0 bg-pattern" />
+      <div className="absolute inset-0 aurora pointer-events-none" />
+      <div className="absolute inset-0 grain pointer-events-none" />
 
-      {/* 3D canvas — full viewport, drag anywhere */}
+      {/* 3D canvas — full viewport, drag anywhere. Neutral lighting so the
+          scene picks up whichever theme accent is active via the post-mute. */}
       <div className="absolute inset-0">
         <Canvas
           camera={{ position: [0, 0.6, 7.2], fov: 50 }}
           dpr={[1, 2]}
           gl={{ alpha: true, antialias: true }}
         >
-          <ambientLight intensity={0.7} />
-          <pointLight position={[5, 4, 5]} intensity={1.0} color="#22D3EE" />
-          <pointLight position={[-5, -3, -2]} intensity={0.6} color="#A855F7" />
+          <ambientLight intensity={0.8} />
+          <pointLight position={[5, 4, 5]} intensity={0.9} color="#ffffff" />
+          <pointLight position={[-5, -3, -2]} intensity={0.5} color="#ffffff" />
           <Suspense fallback={null}>
             <Scene />
           </Suspense>
@@ -206,8 +206,8 @@ export default function HeroCoverflow3D() {
           transition={{ duration: 0.6 }}
           className="pointer-events-auto flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon mb-6"
         >
-          <span className="h-2 w-2 rounded-full bg-cyan-neon animate-pulse" />
-          Hi, I&apos;m Shada · software engineer · Istanbul
+          <span className="h-1.5 w-1.5 rounded-full bg-cyan-neon" />
+          Shada Daab · software engineer · Istanbul
         </motion.div>
 
         <h1 className="font-display font-bold text-text-high leading-[0.86] tracking-[-0.03em] text-[72px] md:text-[148px] xl:text-[180px]">
@@ -259,7 +259,7 @@ export default function HeroCoverflow3D() {
         transition={{ delay: 1.2 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim flex items-center gap-3 pointer-events-none"
       >
-        <span className="h-2 w-2 rounded-full bg-cyan-neon animate-pulse" />
+        <span className="h-1.5 w-1.5 rounded-full bg-cyan-neon" />
         drag the scene · scroll for more
       </motion.div>
     </section>

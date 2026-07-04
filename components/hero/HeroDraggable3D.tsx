@@ -98,7 +98,7 @@ export default function HeroDraggable3D() {
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink-base isolate"
     >
       {/* Ambient */}
-      <div className="absolute inset-0 bg-grid-cyan [background-size:48px_48px] opacity-[0.10]" />
+      <div className="absolute inset-0 bg-pattern" />
       <div className="absolute inset-0 aurora opacity-70 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.10),transparent_55%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,85,247,0.12),transparent_55%)] pointer-events-none" />

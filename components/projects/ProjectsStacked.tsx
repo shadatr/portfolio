@@ -9,8 +9,8 @@ import { cn } from "@/utils/cn";
 
 const ACCENT: Record<Project["accent"], string> = {
   cyan: "text-cyan-neon",
-  violet: "text-violet-pop",
-  mint: "text-emerald-400",
+  violet: "text-cyan-glow",
+  mint: "text-text-high",
 };
 
 function StackedCard({
@@ -83,7 +83,7 @@ function StackedCard({
           <motion.div style={{ y }}>
             <Placeholder
               label={project.name}
-              filename={`featured/${project.slug}-hero.png`}
+              filename={`${project.slug}/hero.png`}
               ratio="video"
               accent={project.accent}
               scanlines={false}

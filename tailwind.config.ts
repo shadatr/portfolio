@@ -85,16 +85,28 @@ module.exports = {
         },
       },
       boxShadow: {
-        "neon-cyan": "0 0 30px -5px rgb(var(--accent-primary) / 0.55)",
-        "neon-violet": "0 0 30px -5px rgb(var(--accent-secondary) / 0.55)",
+        // Softer, accent-tinted glows — no more "neon" intensity
+        "neon-cyan": "0 0 24px -8px rgb(var(--accent-primary) / 0.28)",
+        "neon-violet": "0 0 24px -8px rgb(var(--accent-secondary) / 0.28)",
+        "soft": "0 0 24px -8px rgb(var(--accent-primary) / 0.28)",
         "card":
-          "0 24px 48px -12px rgba(0,0,0,0.6), 0 0 0 1px rgb(var(--accent-primary) / 0.06)",
+          "0 18px 40px -14px rgb(var(--ink-base) / 0.7), inset 0 1px 0 0 rgb(var(--text-high) / 0.04)",
+        "lift":
+          "0 24px 60px -18px rgb(var(--ink-base) / 0.65), 0 1px 0 0 rgb(var(--text-high) / 0.05)",
       },
       backgroundImage: {
-        "grid-cyan":
-          "linear-gradient(rgb(var(--accent-primary) / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--accent-primary) / 0.08) 1px, transparent 1px)",
+        // Theme-aware hairline grid — opacity is driven by --decor-grid-opacity
+        "grid": [
+          "linear-gradient(rgb(var(--text-high) / var(--decor-grid-opacity)) 1px, transparent 1px)",
+          "linear-gradient(90deg, rgb(var(--text-high) / var(--decor-grid-opacity)) 1px, transparent 1px)",
+        ].join(", "),
+        // Backward-compat alias
+        "grid-cyan": [
+          "linear-gradient(rgb(var(--text-high) / var(--decor-grid-opacity)) 1px, transparent 1px)",
+          "linear-gradient(90deg, rgb(var(--text-high) / var(--decor-grid-opacity)) 1px, transparent 1px)",
+        ].join(", "),
         "radial-glow":
-          "radial-gradient(ellipse at center, rgb(var(--accent-primary) / 0.18), transparent 60%)",
+          "radial-gradient(ellipse at center, rgb(var(--accent-primary) / 0.12), transparent 60%)",
       },
     },
     screens: {

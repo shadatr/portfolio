@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/utils/cn";
 
 type Props = {
@@ -10,6 +11,9 @@ type Props = {
   className?: string;
   accent?: "cyan" | "violet" | "mint";
   scanlines?: boolean;
+  /** "cover" crops to fill (cards); "contain" always shows the full
+      screenshot, letterboxed over a blurred copy of itself (case studies). */
+  fit?: "cover" | "contain";
 };
 
 const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
@@ -22,18 +26,18 @@ const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
 
 const ACCENTS = {
   cyan: {
-    border: "border-cyan-neon/30",
+    border: "border-text-high/15",
     text: "text-cyan-neon",
-    glow: "shadow-neon-cyan",
+    glow: "",
   },
   violet: {
-    border: "border-violet-pop/30",
-    text: "text-violet-pop",
-    glow: "shadow-neon-violet",
+    border: "border-text-high/15",
+    text: "text-cyan-glow",
+    glow: "",
   },
   mint: {
-    border: "border-emerald-400/30",
-    text: "text-emerald-400",
+    border: "border-text-high/15",
+    text: "text-text-high",
     glow: "",
   },
 } as const;
@@ -45,8 +49,14 @@ export default function Placeholder({
   className,
   accent = "cyan",
   scanlines = true,
+  fit = "cover",
 }: Props) {
   const a = ACCENTS[accent];
+  // If a real image exists at public/<filename>, it renders on top of the
+  // placeholder art; if the file is missing, onError reveals the placeholder.
+  const [imgFailed, setImgFailed] = useState(false);
+  const showImage = !!filename && !imgFailed;
+
   return (
     <div
       className={cn(
@@ -57,7 +67,7 @@ export default function Placeholder({
         className
       )}
     >
-      <div className="absolute inset-0 bg-grid-cyan [background-size:32px_32px] opacity-40" />
+      <div className="absolute inset-0 bg-pattern opacity-60" />
       {scanlines && <div className="absolute inset-0 scanline" />}
       <div className="absolute inset-0 bg-radial-glow opacity-60" />
 
@@ -85,6 +95,40 @@ export default function Placeholder({
           </div>
         )}
       </div>
+
+      {showImage && fit === "cover" && (
+        <Image
+          src={`/${filename}`}
+          alt={label}
+          fill
+          sizes="(max-width: 900px) 100vw, 60vw"
+          className="object-cover object-top"
+          onError={() => setImgFailed(true)}
+        />
+      )}
+
+      {showImage && fit === "contain" && (
+        <>
+          {/* Blurred self-backdrop fills the letterbox */}
+          <Image
+            src={`/${filename}`}
+            alt=""
+            aria-hidden
+            fill
+            sizes="60vw"
+            className="scale-110 object-cover blur-2xl opacity-40"
+            onError={() => setImgFailed(true)}
+          />
+          <Image
+            src={`/${filename}`}
+            alt={label}
+            fill
+            sizes="(max-width: 900px) 100vw, 60vw"
+            className="object-contain p-3 md:p-4"
+            onError={() => setImgFailed(true)}
+          />
+        </>
+      )}
     </div>
   );
 }

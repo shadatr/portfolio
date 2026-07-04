@@ -50,11 +50,9 @@ function Counter({ to }: { to: number }) {
 
 export default function Stats() {
   return (
-    <section className="relative py-32 md:py-48 overflow-hidden border-y border-cyan-neon/10">
-      {/* Ambient */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.06),transparent_60%)]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-neon/40 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-neon/40 to-transparent" />
+    <section className="relative py-32 md:py-48 overflow-hidden border-y border-ink-line/60">
+      <div className="absolute inset-x-0 top-0 hairline" />
+      <div className="absolute inset-x-0 bottom-0 hairline" />
 
       <div className="relative mx-auto max-w-7xl px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-14 lg:gap-20 items-end">
@@ -81,8 +79,8 @@ export default function Stats() {
               <span className="font-display font-bold text-text-high leading-[0.85] tracking-tight text-[120px] md:text-[220px] xl:text-[280px]">
                 <Counter to={19} />
               </span>
-              <span className="font-display font-bold leading-none text-cyan-neon text-5xl md:text-7xl">
-                GB
+              <span className="font-editorial italic font-normal leading-none text-text-mid text-5xl md:text-7xl">
+                gb
               </span>
             </motion.div>
 

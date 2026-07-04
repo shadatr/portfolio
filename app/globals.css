@@ -2,112 +2,347 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* All palette tokens are space-separated R G B triplets so they work with
-     rgb(var(--x) / <alpha-value>) in Tailwind and rgb(var(--x) / 0.4) in CSS. */
-
-  /* Surfaces */
-  --ink-base: 6 8 15;
-  --ink-surface: 15 23 42;
-  --ink-raised: 23 32 51;
-  --ink-line: 31 42 68;
-
-  /* Text tones */
-  --text-high: 226 232 240;
-  --text-mid: 148 163 184;
-  --text-dim: 100 116 139;
-
-  /* Accents */
-  --accent-primary: 34 211 238;
-  --accent-glow: 103 232 249;
-  --accent-secondary: 168 85 247;
-  --accent-secondary-soft: 192 132 252;
-}
-
 /* ============================================================================
-   THEME PALETTES — each one is a coherent mood (surfaces + text + accents
-   designed together). Switch via the Design Lab. Sets the class on <html>.
+   LUXURY MODE SYSTEM
+
+   Four curated identities. Each is a coherent mood — palette + decorative
+   character — designed so the rest of the site can stay token-driven and
+   simply inherit the feel of whichever mode is active.
+
+     · Midnight Glass     — night flight, observatory, calm tech (default)
+     · Obsidian & Bone    — monograph, atelier, late-night studio
+     · Atelier Paper      — print magazine, editorial, museum
+     · Graphite           — Swiss, brutalist-minimal, gallery
+
+   Tokens are space-separated R G B triplets so they work with both
+   `rgb(var(--x) / <alpha-value>)` (Tailwind) and `rgb(var(--x) / 0.4)` (CSS).
    ============================================================================ */
 
-/* Midnight — slate-blue dark + cyan/violet */
+:root {
+  /* Surfaces */
+  --ink-base: 11 13 18;
+  --ink-surface: 19 23 32;
+  --ink-raised: 28 34 48;
+  --ink-line: 42 49 66;
+
+  /* Text tones */
+  --text-high: 230 232 237;
+  --text-mid: 154 165 184;
+  --text-dim: 90 99 118;
+
+  /* Accent — single calm steel/ice */
+  --accent-primary: 158 180 200;
+  --accent-glow: 182 200 218;
+  --accent-secondary: 111 135 163;
+  --accent-secondary-soft: 142 165 190;
+
+  /* Decorative character knobs each theme can dial */
+  --decor-aurora-opacity: 0.28;
+  --decor-grid-opacity: 0.05;
+  --decor-grain-opacity: 0.025;
+  --decor-vignette-strength: 0.85;
+  --shadow-card-rgb: 0 0 0;
+  --shadow-card-alpha: 0.55;
+}
+
+/* Midnight Glass — slate-blue near-black + steel-ice accent */
 html.theme-midnight {
-  --ink-base: 6 8 15;
-  --ink-surface: 15 23 42;
-  --ink-raised: 23 32 51;
-  --ink-line: 31 42 68;
-  --text-high: 226 232 240;
-  --text-mid: 148 163 184;
-  --text-dim: 100 116 139;
-  --accent-primary: 34 211 238;
-  --accent-glow: 103 232 249;
-  --accent-secondary: 168 85 247;
-  --accent-secondary-soft: 192 132 252;
+  --ink-base: 11 13 18;
+  --ink-surface: 19 23 32;
+  --ink-raised: 28 34 48;
+  --ink-line: 42 49 66;
+  --text-high: 230 232 237;
+  --text-mid: 154 165 184;
+  --text-dim: 90 99 118;
+  --accent-primary: 158 180 200;
+  --accent-glow: 182 200 218;
+  --accent-secondary: 111 135 163;
+  --accent-secondary-soft: 142 165 190;
+  --decor-aurora-opacity: 0.32;
+  --decor-grid-opacity: 0.05;
+  --decor-grain-opacity: 0.03;
+  --decor-vignette-strength: 0.82;
+  --shadow-card-rgb: 6 10 18;
+  --shadow-card-alpha: 0.6;
 }
 
-/* Embers — warm near-black + coral/rose */
-html.theme-embers {
-  --ink-base: 13 9 8;
-  --ink-surface: 28 18 18;
-  --ink-raised: 42 26 28;
-  --ink-line: 60 36 38;
-  --text-high: 245 230 224;
-  --text-mid: 178 154 144;
-  --text-dim: 117 96 89;
-  --accent-primary: 251 113 133;
-  --accent-glow: 253 164 175;
-  --accent-secondary: 244 63 94;
-  --accent-secondary-soft: 251 113 133;
+/* Obsidian & Bone — warm near-black + burnished amber */
+html.theme-obsidian {
+  --ink-base: 10 9 8;
+  --ink-surface: 21 19 15;
+  --ink-raised: 30 27 21;
+  --ink-line: 48 42 32;
+  --text-high: 239 233 221;
+  --text-mid: 168 156 135;
+  --text-dim: 107 98 79;
+  --accent-primary: 201 162 107;
+  --accent-glow: 223 187 133;
+  --accent-secondary: 164 131 82;
+  --accent-secondary-soft: 215 178 125;
+  --decor-aurora-opacity: 0.22;
+  --decor-grid-opacity: 0.04;
+  --decor-grain-opacity: 0.045;
+  --decor-vignette-strength: 0.88;
+  --shadow-card-rgb: 0 0 0;
+  --shadow-card-alpha: 0.7;
 }
 
-/* Forest — green near-black + mint/sky */
-html.theme-forest {
-  --ink-base: 6 14 12;
-  --ink-surface: 13 28 25;
-  --ink-raised: 22 42 36;
-  --ink-line: 32 58 50;
-  --text-high: 224 240 234;
-  --text-mid: 152 184 172;
-  --text-dim: 100 124 116;
-  --accent-primary: 52 211 153;
-  --accent-glow: 110 231 183;
-  --accent-secondary: 56 189 248;
-  --accent-secondary-soft: 125 211 252;
-}
-
-/* Graphite — neutral zinc dark + achromatic accents */
-html.theme-graphite {
-  --ink-base: 9 9 11;
-  --ink-surface: 24 24 27;
-  --ink-raised: 39 39 42;
-  --ink-line: 63 63 70;
-  --text-high: 244 244 245;
-  --text-mid: 161 161 170;
-  --text-dim: 113 113 122;
-  --accent-primary: 244 244 245;
-  --accent-glow: 248 250 252;
-  --accent-secondary: 161 161 170;
-  --accent-secondary-soft: 212 212 216;
-}
-
-/* Paper — light cream + deep teal/maroon (editorial print) */
+/* Atelier Paper — cream + deep oxblood / forest */
 html.theme-paper {
   --ink-base: 244 240 232;
-  --ink-surface: 255 255 255;
+  --ink-surface: 251 248 241;
   --ink-raised: 235 228 214;
   --ink-line: 216 208 192;
-  --text-high: 24 22 19;
-  --text-mid: 110 102 92;
-  --text-dim: 152 144 132;
-  --accent-primary: 14 116 144;
-  --accent-glow: 8 145 178;
-  --accent-secondary: 159 18 57;
-  --accent-secondary-soft: 190 18 60;
+  --text-high: 24 18 14;
+  --text-mid: 110 102 89;
+  --text-dim: 152 144 127;
+  --accent-primary: 107 26 31;
+  --accent-glow: 138 42 48;
+  --accent-secondary: 58 74 60;
+  --accent-secondary-soft: 138 42 48;
+  --decor-aurora-opacity: 0;
+  --decor-grid-opacity: 0.035;
+  --decor-grain-opacity: 0.04;
+  --decor-vignette-strength: 0.15;
+  --shadow-card-rgb: 24 18 14;
+  --shadow-card-alpha: 0.1;
+}
+
+/* Graphite — zinc black + pure achromatic */
+html.theme-graphite {
+  --ink-base: 12 12 13;
+  --ink-surface: 22 22 26;
+  --ink-raised: 31 31 36;
+  --ink-line: 56 56 62;
+  --text-high: 245 245 244;
+  --text-mid: 161 161 170;
+  --text-dim: 113 113 122;
+  --accent-primary: 245 245 244;
+  --accent-glow: 250 250 249;
+  --accent-secondary: 161 161 170;
+  --accent-secondary-soft: 212 212 216;
+  --decor-aurora-opacity: 0;
+  --decor-grid-opacity: 0.035;
+  --decor-grain-opacity: 0.035;
+  --decor-vignette-strength: 0.75;
+  --shadow-card-rgb: 0 0 0;
+  --shadow-card-alpha: 0.5;
+}
+
+/* Legacy aliases — preserved so old localStorage values still resolve */
+html.theme-embers { /* re-routed to Obsidian */
+  --ink-base: 10 9 8;
+  --ink-surface: 21 19 15;
+  --ink-raised: 30 27 21;
+  --ink-line: 48 42 32;
+  --text-high: 239 233 221;
+  --text-mid: 168 156 135;
+  --text-dim: 107 98 79;
+  --accent-primary: 201 162 107;
+  --accent-glow: 223 187 133;
+  --accent-secondary: 164 131 82;
+  --accent-secondary-soft: 215 178 125;
+}
+html.theme-forest { /* re-routed to Midnight */
+  --ink-base: 11 13 18;
+  --ink-surface: 19 23 32;
+  --ink-raised: 28 34 48;
+  --ink-line: 42 49 66;
+  --text-high: 230 232 237;
+  --text-mid: 154 165 184;
+  --text-dim: 90 99 118;
+  --accent-primary: 158 180 200;
+  --accent-glow: 182 200 218;
+  --accent-secondary: 111 135 163;
+  --accent-secondary-soft: 142 165 190;
 }
 
 /* ============================================================================
-   FONT SETS — pick a vibe in the Design Lab.
-   Each class redefines the four tokens consumed by Tailwind's font-display,
-   font-editorial, font-sans, font-mono utilities.
+   WORLDS — five dark full-experience skins, chosen in the world dock.
+   Defined AFTER the theme blocks so the active world always wins the palette.
+   Each world also mounts an ambient layer (components/worlds/WorldLayer).
+
+     · Space    — indigo black, starlight lavender      (default)
+     · Liquid   — molten near-black, warm coral
+     · Deep     — abyssal navy, bioluminescent aqua
+     · Toy Box  — dark plum, candy pink
+     · ShadaOS  — dark slate, phosphor mint
+   ============================================================================ */
+
+html.world-space {
+  --ink-base: 7 8 17;
+  --ink-surface: 15 17 30;
+  --ink-raised: 24 27 46;
+  --ink-line: 44 49 78;
+  --text-high: 232 236 250;
+  --text-mid: 158 168 198;
+  --text-dim: 96 104 136;
+  --accent-primary: 157 180 255;
+  --accent-glow: 194 208 255;
+  --accent-secondary: 122 110 220;
+  --accent-secondary-soft: 168 158 240;
+  --decor-aurora-opacity: 0.26;
+  --decor-grid-opacity: 0.04;
+  --decor-grain-opacity: 0.03;
+  --decor-vignette-strength: 0.7;
+  --shadow-card-rgb: 2 4 14;
+  --shadow-card-alpha: 0.65;
+}
+
+html.world-liquid {
+  --ink-base: 18 15 12;
+  --ink-surface: 30 24 19;
+  --ink-raised: 44 35 27;
+  --ink-line: 66 52 40;
+  --text-high: 246 238 228;
+  --text-mid: 182 164 146;
+  --text-dim: 122 106 89;
+  --accent-primary: 255 119 89;
+  --accent-glow: 255 154 122;
+  --accent-secondary: 226 148 94;
+  --accent-secondary-soft: 255 176 140;
+  --decor-aurora-opacity: 0.2;
+  --decor-grid-opacity: 0.035;
+  --decor-grain-opacity: 0.04;
+  --decor-vignette-strength: 0.72;
+  --shadow-card-rgb: 12 6 2;
+  --shadow-card-alpha: 0.6;
+}
+
+html.world-deep {
+  --ink-base: 3 12 24;
+  --ink-surface: 8 22 38;
+  --ink-raised: 14 33 54;
+  --ink-line: 27 52 78;
+  --text-high: 220 240 252;
+  --text-mid: 142 176 200;
+  --text-dim: 84 116 142;
+  --accent-primary: 95 212 240;
+  --accent-glow: 142 228 255;
+  --accent-secondary: 63 142 192;
+  --accent-secondary-soft: 122 196 232;
+  --decor-aurora-opacity: 0.24;
+  --decor-grid-opacity: 0.035;
+  --decor-grain-opacity: 0.025;
+  --decor-vignette-strength: 0.75;
+  --shadow-card-rgb: 0 6 16;
+  --shadow-card-alpha: 0.7;
+}
+
+html.world-toybox {
+  --ink-base: 23 17 34;
+  --ink-surface: 35 27 52;
+  --ink-raised: 49 38 72;
+  --ink-line: 70 56 100;
+  --text-high: 242 236 250;
+  --text-mid: 182 170 204;
+  --text-dim: 124 112 148;
+  --accent-primary: 255 143 163;
+  --accent-glow: 255 176 191;
+  --accent-secondary: 155 140 232;
+  --accent-secondary-soft: 189 176 248;
+  --decor-aurora-opacity: 0.3;
+  --decor-grid-opacity: 0.04;
+  --decor-grain-opacity: 0.028;
+  --decor-vignette-strength: 0.68;
+  --shadow-card-rgb: 10 4 20;
+  --shadow-card-alpha: 0.6;
+}
+
+html.world-os {
+  --ink-base: 13 15 20;
+  --ink-surface: 22 26 34;
+  --ink-raised: 32 38 50;
+  --ink-line: 50 58 74;
+  --text-high: 235 240 245;
+  --text-mid: 158 170 184;
+  --text-dim: 100 110 126;
+  --accent-primary: 77 224 165;
+  --accent-glow: 130 240 195;
+  --accent-secondary: 127 200 248;
+  --accent-secondary-soft: 160 216 250;
+  --decor-aurora-opacity: 0.24;
+  --decor-grid-opacity: 0.045;
+  --decor-grain-opacity: 0.03;
+  --decor-vignette-strength: 0.7;
+  --shadow-card-rgb: 0 4 8;
+  --shadow-card-alpha: 0.65;
+}
+
+/* In the four scroll worlds, opaque `bg-ink-base` panels (heroes, pinned
+   reels) become a translucent veil so the ambient world layer glows through
+   while text stays readable. ShadaOS keeps its own structure and is exempt. */
+html.world-space .bg-ink-base,
+html.world-liquid .bg-ink-base,
+html.world-deep .bg-ink-base,
+html.world-toybox .bg-ink-base {
+  background-color: rgb(var(--ink-base) / 0.58);
+}
+
+/* ============================================================================
+   BACKGROUND PATTERNS — picked in Modes. Drives the .bg-pattern utility.
+   Each `html.pattern-X` class supplies `--pattern-image` and `--pattern-size`,
+   so any component can layer one universal .bg-pattern overlay.
+   ============================================================================ */
+:root {
+  --pattern-image: none;
+  --pattern-size: 56px 56px;
+  --pattern-position: 0 0;
+}
+
+html.pattern-none {
+  --pattern-image: none;
+}
+
+html.pattern-grid {
+  --pattern-image:
+    linear-gradient(rgb(var(--text-high) / var(--decor-grid-opacity)) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--text-high) / var(--decor-grid-opacity)) 1px, transparent 1px);
+  --pattern-size: 56px 56px;
+}
+
+html.pattern-dots {
+  --pattern-image: radial-gradient(
+    rgb(var(--text-high) / calc(var(--decor-grid-opacity) * 2.6)) 1px,
+    transparent 1.4px
+  );
+  --pattern-size: 22px 22px;
+}
+
+html.pattern-lines {
+  --pattern-image: linear-gradient(
+    to bottom,
+    rgb(var(--text-high) / var(--decor-grid-opacity)) 1px,
+    transparent 1px
+  );
+  --pattern-size: 100% 64px;
+}
+
+html.pattern-topo {
+  /* Soft repeating rings — organic, never blueprint */
+  --pattern-image: radial-gradient(
+    circle at 50% 50%,
+    transparent 36px,
+    rgb(var(--text-high) / calc(var(--decor-grid-opacity) * 1.4)) 37px,
+    transparent 38px
+  );
+  --pattern-size: 84px 84px;
+}
+
+html.pattern-diagonal {
+  /* 45deg hairlines, wide spacing — quiet, editorial */
+  --pattern-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0,
+    transparent 38px,
+    rgb(var(--text-high) / var(--decor-grid-opacity)) 38px,
+    rgb(var(--text-high) / var(--decor-grid-opacity)) 39px
+  );
+  --pattern-size: auto;
+}
+
+/* ============================================================================
+   FONT SETS — pick a vibe in Modes.
    ============================================================================ */
 html.fonts-editorial {
   --font-display: var(--font-bricolage);
@@ -149,24 +384,24 @@ html {
 }
 
 ::selection {
-  background: rgb(var(--accent-primary) / 0.35);
-  color: #fff;
+  background: rgb(var(--accent-primary) / 0.22);
+  color: rgb(var(--text-high));
 }
 
+/* Hairline scrollbar — single accent, no gradient */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgb(var(--ink-base));
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgb(var(--accent-primary)) 0%,
-    rgb(var(--accent-secondary)) 100%
-  );
-  border-radius: 8px;
+  background: rgb(var(--text-dim) / 0.4);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-primary) / 0.6);
 }
 
 @layer utilities {
@@ -174,146 +409,140 @@ html {
     font-family: var(--font-editorial), ui-serif, Georgia, "Times New Roman", serif;
   }
 
+  /* Theme-aware background pattern — driven by the user's choice in Modes.
+     Replaces the old fixed `bg-grid` square pattern. */
+  .bg-pattern {
+    background-image: var(--pattern-image);
+    background-size: var(--pattern-size);
+    background-position: var(--pattern-position);
+  }
+
+  /* "Gradient" utilities are now single-tone in luxury modes — they keep the
+     class name so existing JSX works, but render as a calm italic accent.
+     This kills the cyan→violet AI fingerprint everywhere it leaks. */
   .text-gradient-cyan {
-    background: linear-gradient(
-      135deg,
-      rgb(var(--accent-glow)) 0%,
-      rgb(var(--accent-primary)) 50%,
-      rgb(var(--accent-secondary)) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: rgb(var(--accent-glow));
   }
 
-  /* "Alt" gradient — used for italic editorial accents. Per-theme below. */
   .text-gradient-warm {
-    background: linear-gradient(
-      135deg,
-      rgb(var(--accent-secondary-soft)) 0%,
-      rgb(var(--accent-secondary)) 50%,
-      rgb(var(--accent-glow)) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: rgb(var(--accent-primary));
   }
 
-  .ring-neon {
-    box-shadow:
-      0 0 0 1px rgb(var(--accent-primary) / 0.4),
-      0 0 32px -4px rgb(var(--accent-primary) / 0.35);
-  }
-
+  /* Glass — true glassmorphism with 1px inner edge + tinted shadow */
   .glass {
     background: rgb(var(--ink-surface) / 0.55);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid rgb(var(--accent-primary) / 0.12);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgb(var(--text-high) / 0.06);
+    box-shadow:
+      inset 0 1px 0 0 rgb(var(--text-high) / 0.04),
+      0 12px 40px -16px rgb(var(--shadow-card-rgb) / var(--shadow-card-alpha));
   }
 
   .glass-strong {
-    background: rgb(var(--ink-surface) / 0.75);
-    backdrop-filter: blur(18px) saturate(180%);
-    -webkit-backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid rgb(var(--accent-primary) / 0.18);
+    background: rgb(var(--ink-surface) / 0.72);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgb(var(--text-high) / 0.08);
+    box-shadow:
+      inset 0 1px 0 0 rgb(var(--text-high) / 0.06),
+      0 18px 50px -18px rgb(var(--shadow-card-rgb) / var(--shadow-card-alpha));
   }
 
+  /* Soft accent ring — replaces the old neon glow */
+  .ring-soft {
+    box-shadow:
+      0 0 0 1px rgb(var(--accent-primary) / 0.18),
+      0 0 24px -8px rgb(var(--accent-primary) / 0.22);
+  }
+
+  /* Backward-compat alias (some files still reference `ring-neon`) */
+  .ring-neon {
+    box-shadow:
+      0 0 0 1px rgb(var(--accent-primary) / 0.22),
+      0 0 28px -10px rgb(var(--accent-primary) / 0.28);
+  }
+
+  /* Universal film-grain overlay — adds tactile depth without color noise */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--decor-grain-opacity);
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  /* Legacy alias */
   .noise::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.04;
+    opacity: var(--decor-grain-opacity);
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
   }
 
+  /* Scanline retired — kept as a no-op so old JSX doesn't break */
   .scanline {
-    background: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 2px,
-      rgb(var(--accent-primary) / 0.04) 3px,
-      transparent 4px
-    );
+    background: none;
   }
 
-  /* Aurora soft gradient mesh, runs slow */
+  /* Aurora — now theme-driven via --decor-aurora-opacity, so it disappears
+     in Paper/Graphite and stays subtle elsewhere. Slower drift, calmer. */
   .aurora {
     background:
-      radial-gradient(60% 60% at 20% 30%, rgb(var(--accent-primary) / 0.16), transparent 60%),
-      radial-gradient(55% 55% at 80% 20%, rgb(var(--accent-secondary) / 0.18), transparent 60%),
-      radial-gradient(50% 50% at 60% 90%, rgb(var(--accent-glow) / 0.10), transparent 60%);
-    filter: blur(40px);
-    animation: aurora-drift 18s ease-in-out infinite alternate;
+      radial-gradient(60% 60% at 20% 30%, rgb(var(--accent-primary) / 0.18), transparent 60%),
+      radial-gradient(55% 55% at 80% 20%, rgb(var(--accent-secondary) / 0.16), transparent 60%),
+      radial-gradient(50% 50% at 60% 90%, rgb(var(--accent-glow) / 0.08), transparent 60%);
+    filter: blur(60px);
+    opacity: var(--decor-aurora-opacity);
+    animation: aurora-drift 28s ease-in-out infinite alternate;
   }
 
   @keyframes aurora-drift {
-    0% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    50% {
-      transform: translate3d(2%, -1%, 0) scale(1.05);
-    }
-    100% {
-      transform: translate3d(-2%, 2%, 0) scale(1);
-    }
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(1.5%, -1%, 0) scale(1.03); }
+    100% { transform: translate3d(-1.5%, 1.5%, 0) scale(1); }
   }
 
-  /* Vertical light beams behind hero */
+  /* Beams retired — kept as a no-op so old JSX doesn't break */
   .beams::before,
   .beams::after {
-    content: "";
-    position: absolute;
-    top: -20%;
-    bottom: -20%;
-    width: 1px;
-    background: linear-gradient(
-      180deg,
-      transparent,
-      rgb(var(--accent-primary) / 0.5),
-      transparent
-    );
-    animation: beam-fall 6s linear infinite;
-  }
-  .beams::before { left: 22%; animation-delay: -2s; }
-  .beams::after { left: 78%; animation-delay: -4s; }
-
-  @keyframes beam-fall {
-    0% { transform: translateY(-30%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(30%); opacity: 0; }
+    content: none;
   }
 
-  /* Marquee runners */
+  /* Marquee runner — slower, more dignified */
   .marquee-track {
-    animation: marquee-x 60s linear infinite;
+    animation: marquee-x 90s linear infinite;
   }
   @keyframes marquee-x {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
 
-  /* Slow tilt on hover */
+  /* Tilt on hover — slightly softer */
   .hover-tilt {
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   .hover-tilt:hover {
-    transform: rotate(-0.6deg) translateY(-2px);
+    transform: rotate(-0.4deg) translateY(-2px);
   }
 
-  /* Crosshair plus signs as decorative grid markers */
+  /* Corner markers — quieter, theme-aware */
   .crosshair {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
+    opacity: 0.5;
   }
   .crosshair::before,
   .crosshair::after {
     content: "";
     position: absolute;
-    background: rgb(var(--accent-primary) / 0.4);
+    background: rgb(var(--text-dim) / 0.6);
   }
   .crosshair::before {
     top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%);
@@ -322,31 +551,97 @@ html {
     top: 0; bottom: 0; left: 50%; width: 1px; transform: translateX(-50%);
   }
 
-  /* Theme-aware center vignette used by hero overlays */
+  /* Center vignette — strength varies per theme so Paper stays light */
   .center-vignette {
     background: radial-gradient(
       ellipse at center,
       transparent 25%,
-      rgb(var(--ink-base) / 0.92) 90%
+      rgb(var(--ink-base) / var(--decor-vignette-strength)) 92%
     );
   }
   .center-vignette-soft {
     background: radial-gradient(
       ellipse at center,
-      transparent 30%,
-      rgb(var(--ink-base) / 0.85) 92%
+      transparent 32%,
+      rgb(var(--ink-base) / calc(var(--decor-vignette-strength) - 0.08)) 94%
     );
   }
 
-  /* Drop cap for editorial paragraphs */
+  /* Drop cap — accent-tinted editorial first letter */
   .dropcap::first-letter {
     font-family: var(--font-editorial), ui-serif, Georgia, serif;
     font-style: italic;
     font-size: 4.5em;
     line-height: 0.85;
     float: left;
-    padding: 0.1em 0.12em 0 0;
-    color: rgb(var(--accent-glow));
+    padding: 0.08em 0.14em 0 0;
+    color: rgb(var(--accent-primary));
+  }
+
+  /* Hairline rule — used across sections instead of full borders */
+  .hairline {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--text-dim) / 0.4) 20%,
+      rgb(var(--text-dim) / 0.4) 80%,
+      transparent
+    );
+    height: 1px;
+  }
+}
+
+/* ============================================================================
+   WORLD LAYER PRIMITIVES — used by components/worlds/WorldLayer.tsx
+   ============================================================================ */
+
+/* Liquid world — coral metaballs. Parent applies blur+contrast so these merge. */
+.wl-goo-blob {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ff7759;
+  animation: wl-goo-drift 20s ease-in-out infinite alternate;
+}
+@keyframes wl-goo-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6vw, -5vh) scale(1.14);
+  }
+  100% {
+    transform: translate(-5vw, 6vh) scale(0.92);
+  }
+}
+
+/* Toy Box world — soft nightlight clay blobs. */
+.wl-toy {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 46% 54% 58% 42% / 50% 44% 56% 50%;
+  filter: blur(18px);
+  animation: wl-toy-drift 22s ease-in-out infinite alternate;
+}
+@keyframes wl-toy-drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    border-radius: 46% 54% 58% 42% / 50% 44% 56% 50%;
+  }
+  50% {
+    transform: translate(3vw, 4vh) rotate(8deg);
+    border-radius: 56% 44% 42% 58% / 44% 56% 46% 54%;
+  }
+  100% {
+    transform: translate(-3vw, -3vh) rotate(-6deg);
+    border-radius: 50% 50% 54% 46% / 54% 46% 52% 48%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-goo-blob,
+  .wl-toy {
+    animation: none;
   }
 }
 
@@ -358,7 +653,20 @@ html {
 }
 
 :focus-visible {
-  outline: 2px solid rgb(var(--accent-primary));
+  outline: 1.5px solid rgb(var(--accent-primary) / 0.75);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+/* Honor reduced motion — kill drift/marquee/pulse for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .aurora,
+  .marquee-track {
+    animation: none !important;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

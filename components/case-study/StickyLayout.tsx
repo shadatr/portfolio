@@ -8,8 +8,8 @@ import { cn } from "@/utils/cn";
 
 const ACCENT = {
   cyan: "text-cyan-neon",
-  violet: "text-violet-pop",
-  mint: "text-emerald-400",
+  violet: "text-cyan-glow",
+  mint: "text-text-high",
 } as const;
 
 export default function StickyLayout({ study }: { study: CaseStudy }) {
@@ -20,7 +20,7 @@ export default function StickyLayout({ study }: { study: CaseStudy }) {
         {/* Sticky left visual */}
         <div className="relative">
           <div className="lg:sticky lg:top-32">
-            <Placeholder
+            <Placeholder fit="contain"
               label={`${study.meta.name} — context`}
               filename={`${study.slug}/context.png`}
               ratio="portrait"
@@ -77,7 +77,7 @@ export default function StickyLayout({ study }: { study: CaseStudy }) {
                   ))}
                 </ul>
               )}
-              <Placeholder
+              <Placeholder fit="contain"
                 label={ch.placeholder.label}
                 filename={ch.placeholder.filename}
                 ratio={ch.placeholder.ratio || "video"}

@@ -43,11 +43,11 @@ export default function MagneticButton({
   }
 
   const base =
-    "relative inline-flex items-center gap-2 px-6 py-3 rounded-full font-mono text-xsm uppercase tracking-[0.18em] transition-colors will-change-transform";
+    "relative inline-flex items-center gap-3 px-6 py-3 rounded-full font-mono text-xsm uppercase tracking-[0.18em] will-change-transform active:scale-[0.98] transition-[background-color,border-color,color,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]";
   const styles =
     variant === "primary"
-      ? "bg-cyan-neon text-ink-base hover:bg-cyan-glow shadow-neon-cyan"
-      : "bg-transparent text-text-high border border-ink-line hover:border-cyan-neon hover:text-cyan-neon";
+      ? "bg-cyan-neon text-ink-base hover:bg-cyan-glow shadow-soft"
+      : "bg-ink-surface/30 text-text-high ring-1 ring-text-high/10 hover:ring-text-high/30 hover:bg-ink-surface/60";
 
   const content = (
     <motion.div

@@ -1,7 +1,7 @@
 export type Stack = string;
 
 export type Project = {
-  slug: "lets-note" | "tummie" | "moonshot";
+  slug: "lets-note" | "tummie" | "moonshot" | "aidventure";
   name: string;
   tagline: string;
   oneLiner: string;
@@ -10,6 +10,8 @@ export type Project = {
   stack: Stack[];
   accent: "cyan" | "violet" | "mint";
   href: string;
+  /** Live product or source link, shown on cards and case-study headers. */
+  external?: { label: string; href: string };
 };
 
 export type ExperienceItem = {
@@ -24,19 +26,9 @@ export type ExperienceItem = {
   href: string;
 };
 
+// Order matters: projects[0] is the featured build — it gets the big bento
+// slot and the pinned Spotlight section.
 export const projects: Project[] = [
-  {
-    slug: "lets-note",
-    name: "Let's Note AI",
-    tagline: "AI study companion",
-    oneLiner:
-      "An AI study platform that turns PDFs, slides, audio lectures and YouTube videos into summaries, flashcards, quizzes, podcasts and a chatbot that knows your material.",
-    role: "Full-stack engineer · solo build",
-    year: "2025",
-    stack: ["Rust", "Axum", "Next.js 15", "Supabase", "Gemini 2.0", "AssemblyAI"],
-    accent: "cyan",
-    href: "/projects/lets-note",
-  },
   {
     slug: "tummie",
     name: "Tummie",
@@ -48,6 +40,20 @@ export const projects: Project[] = [
     stack: ["React Native", "Expo", "Node.js", "Supabase", "Gemini 2.5"],
     accent: "violet",
     href: "/projects/tummie",
+    external: { label: "tummie.app", href: "https://tummie.app/" },
+  },
+  {
+    slug: "lets-note",
+    name: "Let's Note AI",
+    tagline: "AI study companion",
+    oneLiner:
+      "An AI study platform that turns PDFs, slides, audio lectures and YouTube videos into summaries, flashcards, quizzes, podcasts and a chatbot that knows your material.",
+    role: "Full-stack engineer · solo build",
+    year: "2025",
+    stack: ["Rust", "Axum", "Next.js 15", "Supabase", "Gemini 2.0", "AssemblyAI"],
+    accent: "cyan",
+    href: "/projects/lets-note",
+    external: { label: "letsnote.ai", href: "https://letsnote.ai/" },
   },
   {
     slug: "moonshot",
@@ -60,6 +66,20 @@ export const projects: Project[] = [
     stack: ["Rust", "Tokio", "Solana SDK", "Serenity"],
     accent: "mint",
     href: "/projects/moonshot",
+    external: { label: "GitHub", href: "https://github.com/shadatr/moonshot-monitor" },
+  },
+  {
+    slug: "aidventure",
+    name: "Aidventure",
+    tagline: "AI travel planner",
+    oneLiner:
+      "An AI trip planner that turns a conversation into a complete travel plan — spaCy NER extracts destinations, dates and budget; Mistral streams the itinerary; real flights, hotels and weather come from live APIs.",
+    role: "Graduation project · 2-person team — AI chat, NER, LLM, auth, plans, dashboard",
+    year: "2026",
+    stack: ["Next.js 14", "FastAPI", "PostgreSQL", "Mistral", "spaCy", "scikit-learn"],
+    accent: "cyan",
+    href: "/projects/aidventure",
+    external: { label: "GitHub", href: "https://github.com/shadatr/aidventure" },
   },
 ];
 

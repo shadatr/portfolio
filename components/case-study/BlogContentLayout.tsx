@@ -7,9 +7,9 @@ import Placeholder from "../ui-kit/Placeholder";
 import { cn } from "@/utils/cn";
 
 const ACCENT = {
-  cyan: { text: "text-cyan-neon", bg: "bg-cyan-neon", border: "border-cyan-neon/30" },
-  violet: { text: "text-violet-pop", bg: "bg-violet-pop", border: "border-violet-pop/30" },
-  mint: { text: "text-emerald-400", bg: "bg-emerald-400", border: "border-emerald-400/30" },
+  cyan: { text: "text-cyan-neon", bg: "bg-cyan-neon", border: "border-text-high/15" },
+  violet: { text: "text-cyan-glow", bg: "bg-cyan-glow", border: "border-text-high/15" },
+  mint: { text: "text-text-high", bg: "bg-text-high", border: "border-text-high/15" },
 } as const;
 
 // Pluck a representative quote-y line from the body
@@ -201,7 +201,7 @@ function Chapter({
           wantWideImage && "md:-mx-24 lg:-mx-32"
         )}
       >
-        <Placeholder
+        <Placeholder fit="contain"
           label={chapter.placeholder.label}
           filename={chapter.placeholder.filename}
           ratio={chapter.placeholder.ratio || "video"}

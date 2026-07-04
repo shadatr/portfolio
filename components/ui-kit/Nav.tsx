@@ -5,12 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { cn } from "@/utils/cn";
+import { useVariants } from "@/components/variants/VariantProvider";
 
+// Mirrors the page order: proof first, story second
 const LINKS = [
   { href: "/#hero", label: "Home" },
+  { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
   { href: "/#experience", label: "Experience" },
-  { href: "/#work", label: "Work" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -38,18 +40,18 @@ export default function Nav() {
     >
       <div
         className={cn(
-          "mx-auto max-w-6xl px-4 md:px-6 flex items-center justify-between transition-all rounded-full",
+          "mx-auto max-w-5xl px-4 md:px-6 flex items-center justify-between rounded-full",
+          "transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]",
           scrolled
             ? "glass-strong mx-3 md:mx-auto py-2 px-3"
             : "py-2 px-2"
         )}
       >
-        <Link href="/" className="flex items-center gap-2 group" data-cursor="hover">
-          <div className="relative h-8 w-8 rounded-lg bg-ink-raised border border-cyan-neon/30 grid place-items-center overflow-hidden">
+        <Link href="/" className="flex items-center gap-2.5 group" data-cursor="hover">
+          <div className="relative h-8 w-8 rounded-lg bg-ink-raised/80 ring-1 ring-text-high/10 grid place-items-center overflow-hidden">
             <span className="font-display text-cyan-neon font-bold text-sm">
               S
             </span>
-            <span className="absolute inset-0 bg-radial-glow opacity-50" />
           </div>
           <div className="font-display font-semibold text-text-high tracking-tight hidden md:block">
             shada<span className="text-cyan-neon">.</span>
@@ -61,7 +63,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={isHome ? l.href.replace("/", "") : l.href}
-              className="text-xxsm md:text-xsm font-mono uppercase tracking-[0.18em] px-2 md:px-3 py-2 rounded-full text-text-mid hover:text-cyan-neon transition-colors"
+              className="text-xxsm md:text-xsm font-mono uppercase tracking-[0.18em] px-2 md:px-3 py-2 rounded-full text-text-mid hover:text-text-high transition-colors duration-500"
               data-cursor="hover"
             >
               {l.label}

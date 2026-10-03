@@ -1,7 +1,8 @@
 "use client";
 
 import React, { Suspense, useMemo, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
+import SafeCanvas from "./SafeCanvas";
 import * as THREE from "three";
 
 // Convert lat/lon to a 3D point on a unit sphere
@@ -114,7 +115,7 @@ function Wireframe() {
 export default function Globe({ className }: { className?: string }) {
   return (
     <div className={className}>
-      <Canvas
+      <SafeCanvas
         camera={{ position: [0, 0.4, 4.6], fov: 45 }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: true }}
@@ -124,7 +125,7 @@ export default function Globe({ className }: { className?: string }) {
         <Suspense fallback={null}>
           <Wireframe />
         </Suspense>
-      </Canvas>
+      </SafeCanvas>
     </div>
   );
 }

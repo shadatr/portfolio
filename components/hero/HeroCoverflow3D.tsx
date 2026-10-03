@@ -1,7 +1,8 @@
 "use client";
 
 import React, { Suspense, useMemo, useRef } from "react";
-import { Canvas, useFrame, useLoader, ThreeEvent } from "@react-three/fiber";
+import { useFrame, useLoader, ThreeEvent } from "@react-three/fiber";
+import SafeCanvas from "../ui-kit/SafeCanvas";
 import { TextureLoader } from "three";
 import * as THREE from "three";
 import { motion } from "framer-motion";
@@ -173,7 +174,7 @@ export default function HeroCoverflow3D() {
       {/* 3D canvas — full viewport, drag anywhere. Neutral lighting so the
           scene picks up whichever theme accent is active via the post-mute. */}
       <div className="absolute inset-0">
-        <Canvas
+        <SafeCanvas
           camera={{ position: [0, 0.6, 7.2], fov: 50 }}
           dpr={[1, 2]}
           gl={{ alpha: true, antialias: true }}
@@ -184,7 +185,7 @@ export default function HeroCoverflow3D() {
           <Suspense fallback={null}>
             <Scene />
           </Suspense>
-        </Canvas>
+        </SafeCanvas>
       </div>
 
       {/* Mute layers so type leads */}

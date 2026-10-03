@@ -1,7 +1,8 @@
 "use client";
 
 import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame, ThreeEvent } from "@react-three/fiber";
+import { useFrame, ThreeEvent } from "@react-three/fiber";
+import SafeCanvas from "../ui-kit/SafeCanvas";
 import { Float, MeshDistortMaterial, Environment } from "@react-three/drei";
 import * as THREE from "three";
 import { motion } from "framer-motion";
@@ -105,7 +106,7 @@ export default function HeroDraggable3D() {
 
       {/* Full-viewport 3D canvas — drag anywhere to spin */}
       <div className="absolute inset-0">
-        <Canvas
+        <SafeCanvas
           camera={{ position: [0, 0, 7.5], fov: 45 }}
           dpr={[1, 2]}
           gl={{ alpha: true, antialias: true }}
@@ -117,7 +118,7 @@ export default function HeroDraggable3D() {
             <DraggableGroup />
             <Environment preset="night" />
           </Suspense>
-        </Canvas>
+        </SafeCanvas>
       </div>
 
       {/* Mute layers so type reads above the knot */}

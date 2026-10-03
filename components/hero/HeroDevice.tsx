@@ -1,7 +1,8 @@
 "use client";
 
 import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
+import SafeCanvas from "../ui-kit/SafeCanvas";
 import { Float, RoundedBox, Environment } from "@react-three/drei";
 import * as THREE from "three";
 import { HeroFrame, HeroCopy } from "./HeroShell";
@@ -67,7 +68,7 @@ export default function HeroDevice() {
         <HeroCopy />
         <div className="relative h-[420px] md:h-[560px] w-full">
           <div className="absolute inset-0 rounded-3xl glass" />
-          <Canvas camera={{ position: [0, 0.4, 5], fov: 45 }} dpr={[1, 2]}>
+          <SafeCanvas camera={{ position: [0, 0.4, 5], fov: 45 }} dpr={[1, 2]}>
             <ambientLight intensity={0.35} />
             <pointLight position={[3, 4, 4]} intensity={1.3} color="#22D3EE" />
             <pointLight position={[-4, -1, 2]} intensity={0.9} color="#A855F7" />
@@ -76,7 +77,7 @@ export default function HeroDevice() {
               <Phone />
               <Environment preset="city" />
             </Suspense>
-          </Canvas>
+          </SafeCanvas>
           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xxsm text-text-mid">
             <span>● desktop · mobile</span>
             <span className="text-cyan-neon">live preview</span>

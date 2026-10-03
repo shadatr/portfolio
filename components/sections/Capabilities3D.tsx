@@ -1,7 +1,8 @@
 "use client";
 
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useFrame, ThreeEvent } from "@react-three/fiber";
+import { useFrame, ThreeEvent } from "@react-three/fiber";
+import SafeCanvas from "../ui-kit/SafeCanvas";
 import {
   Float,
   MeshDistortMaterial,
@@ -350,7 +351,7 @@ export default function Capabilities3D() {
 
           {/* Right: 3D — no frame, no border, just the canvas. */}
           <div className="relative aspect-square w-full max-w-[600px] mx-auto">
-            <Canvas
+            <SafeCanvas
               camera={{ position: [0, 0, 7.2], fov: 45 }}
               dpr={[1, 2]}
               gl={{ alpha: true, antialias: true }}
@@ -363,7 +364,7 @@ export default function Capabilities3D() {
                 <Carousel activeIndex={active} />
                 <Environment preset="night" />
               </Suspense>
-            </Canvas>
+            </SafeCanvas>
 
             {/* Tiny telemetry caption — sits below the canvas, no frame */}
             <div className="absolute -bottom-2 inset-x-0 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-text-dim pointer-events-none">

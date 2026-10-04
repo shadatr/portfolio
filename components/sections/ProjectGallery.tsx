@@ -118,7 +118,7 @@ function Header() {
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.4 }}
         className="flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
       >
@@ -128,7 +128,7 @@ function Header() {
       <motion.h2
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.6, delay: 0.05 }}
         className="mt-4 max-w-3xl font-display font-bold text-text-high leading-[0.95] tracking-[-0.02em] text-[44px] md:text-[88px]"
       >
@@ -141,7 +141,7 @@ function Header() {
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.5, delay: 0.15 }}
         className="mt-5 max-w-xl text-md text-text-mid leading-relaxed"
       >

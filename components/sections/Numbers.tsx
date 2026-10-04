@@ -9,9 +9,9 @@ import { motion, useInView } from "framer-motion";
    ============================================================================ */
 
 const STATS: { to: number; prefix?: string; suffix?: string; label: string }[] = [
-  { to: 3, label: "apps in production" },
+  { to: 3, label: "apps shipped solo" },
   { to: 4, suffix: "y", label: "shipping end-to-end" },
-  { to: 5, label: "systems live" },
+  { to: 5, label: "systems in production" },
   { to: 100, prefix: "<", suffix: "ms", label: "hot path budget" },
 ];
 
@@ -45,7 +45,7 @@ export default function Numbers() {
   return (
     <section
       aria-label="By the numbers"
-      className="relative overflow-hidden border-t border-ink-line/60 py-24 md:py-36"
+      className="relative overflow-hidden border-t border-ink-line/60 py-20 md:py-28"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
 
@@ -55,7 +55,7 @@ export default function Numbers() {
             key={s.label}
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.32, 0.72, 0, 1] }}
             className="flex flex-col items-center gap-3 text-center"
           >

@@ -15,7 +15,7 @@ export default function Location() {
   return (
     <section
       aria-label="Location"
-      className="relative overflow-hidden border-t border-ink-line/60 py-24 md:py-36"
+      className="relative overflow-hidden border-t border-ink-line/60 py-20 md:py-28"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
 
@@ -23,7 +23,7 @@ export default function Location() {
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.9 }}
           className="relative mx-auto aspect-square w-full max-w-[560px]"
         >
@@ -34,7 +34,7 @@ export default function Location() {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8 text-center font-mono text-xxsm uppercase tracking-[0.26em] text-text-dim"
         >

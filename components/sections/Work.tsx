@@ -8,7 +8,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative py-36 md:py-56 overflow-hidden border-t border-ink-line/60"
+      className="relative py-24 md:py-36 overflow-hidden border-t border-ink-line/60"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-6 md:px-10">

@@ -44,7 +44,7 @@ export default function ArchiveStrip() {
       <motion.div
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.4 }}
         className="relative mx-auto max-w-7xl px-6 md:px-10 mb-10 flex items-center justify-between font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim"
       >

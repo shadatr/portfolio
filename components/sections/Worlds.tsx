@@ -16,8 +16,9 @@ export default function Worlds() {
 
   return (
     <section
+      id="worlds"
       aria-label="Worlds"
-      className="relative overflow-hidden border-t border-ink-line/60 py-32 md:py-48"
+      className="relative overflow-hidden border-t border-ink-line/60 py-24 md:py-32"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
 
@@ -25,7 +26,7 @@ export default function Worlds() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.4 }}
           className="font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim"
         >
@@ -35,7 +36,7 @@ export default function Worlds() {
         <motion.h2
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6, delay: 0.05 }}
           className="mt-5 font-display font-bold text-text-high leading-[0.95] tracking-[-0.02em] text-[40px] md:text-[72px] [text-wrap:balance]"
         >
@@ -49,7 +50,7 @@ export default function Worlds() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-14 md:mt-20 flex flex-wrap items-stretch justify-center gap-3 md:gap-4"
         >
@@ -91,7 +92,7 @@ export default function Worlds() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-10 font-mono text-xxsm uppercase tracking-[0.26em] text-text-dim"
         >

@@ -658,6 +658,71 @@ html {
   border-radius: 4px;
 }
 
+/* Hero entrance — plain CSS so it plays on first paint, before JS hydrates.
+   Delays are set inline per element. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-line {
+  from {
+    transform: translateY(112%) rotate(4deg);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+}
+.hero-rise {
+  animation: hero-rise 0.6s ease-out both;
+}
+.hero-line {
+  animation: hero-line 1s cubic-bezier(0.22, 0.9, 0.24, 1) both;
+}
+.hero-fade {
+  animation: hero-fade 0.6s ease-out both;
+}
+
+/* Lite mode — <html class="lite"> is set in app/layout.tsx when the browser
+   has no GPU acceleration. Blur, blend modes and infinite drift are cheap on a
+   GPU but crippling on the CPU, so drop them and keep the layout intact. */
+.lite *,
+.lite *::before,
+.lite *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+.lite .glass {
+  background: rgb(var(--ink-surface) / 0.92);
+}
+.lite .glass-strong {
+  background: rgb(var(--ink-surface) / 0.96);
+}
+/* Without the backdrop blur, the hero's screenshot deck needs a heavier veil */
+.lite .hero-veil {
+  background: rgb(var(--ink-base) / 0.6);
+}
+.lite .grain::after,
+.lite .noise::after,
+.lite .aurora,
+.lite .wl-goo-blob,
+.lite .wl-toy,
+.lite .blur-2xl {
+  display: none !important;
+}
+
 /* Honor reduced motion — kill drift/marquee/pulse for accessibility */
 @media (prefers-reduced-motion: reduce) {
   .aurora,

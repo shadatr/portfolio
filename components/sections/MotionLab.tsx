@@ -47,7 +47,7 @@ function SpecimenFrame({
     <motion.div
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "0px 0px 15% 0px" }}
       transition={{ duration: 0.6, ease: EASE }}
       className={`group relative flex flex-col overflow-hidden rounded-2xl bg-ink-surface/30 ring-1 ring-text-high/[0.07] transition-colors duration-500 hover:ring-text-high/15 ${className}`}
     >
@@ -309,7 +309,7 @@ export default function MotionLab() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5 }}
           className="flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
         >
@@ -321,7 +321,7 @@ export default function MotionLab() {
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.6, delay: 0.05 }}
             className="font-display font-bold text-text-high leading-[0.95] tracking-[-0.02em] text-[40px] md:text-[72px] max-w-3xl"
           >
@@ -333,7 +333,7 @@ export default function MotionLab() {
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="max-w-sm text-md text-text-mid leading-relaxed md:text-right"
           >

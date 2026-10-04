@@ -43,7 +43,7 @@ export default function DayJob() {
   return (
     <section
       id="day-job"
-      className="relative overflow-hidden border-t border-ink-line/60 py-36 md:py-56"
+      className="relative overflow-hidden border-t border-ink-line/60 py-24 md:py-36"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
 
@@ -53,7 +53,7 @@ export default function DayJob() {
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.4 }}
             className="flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
           >
@@ -63,7 +63,7 @@ export default function DayJob() {
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.6, delay: 0.05 }}
             className="mt-4 font-display font-bold text-text-high leading-[0.95] tracking-[-0.02em] text-[44px] md:text-[80px] [text-wrap:balance]"
           >
@@ -81,7 +81,7 @@ export default function DayJob() {
               key={pf.name}
               initial={{ opacity: 0, y: 26 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "0px 0px 15% 0px" }}
               transition={{ duration: 0.7, delay: i * 0.12, ease: [0.32, 0.72, 0, 1] }}
               className={pf.featured ? "md:col-span-3" : "md:col-span-2"}
             >
@@ -150,7 +150,7 @@ export default function DayJob() {
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8"
         >

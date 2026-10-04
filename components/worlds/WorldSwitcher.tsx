@@ -22,6 +22,25 @@ export default function WorldSwitcher() {
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
+  // Stay out of the way on the first screen, and step aside while the
+  // in-page Worlds section (which offers the same choice) is on screen.
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const update = () => {
+      const section = document.getElementById("worlds");
+      const r = section?.getBoundingClientRect();
+      const sectionVisible = !!r && r.top < window.innerHeight && r.bottom > 0;
+      setShow(window.scrollY > window.innerHeight * 0.6 && !sectionVisible);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   const travel = (w: WorldVariant) => {
     if (w === world || entering) return;
     setEntering(w);
@@ -63,7 +82,11 @@ export default function WorldSwitcher() {
       </AnimatePresence>
 
       {/* Dock */}
-      <div className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2">
+      <div
+        className={`fixed bottom-4 left-1/2 z-50 -translate-x-1/2 transition-[opacity,transform] duration-500 ${
+          show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
+        }`}
+      >
         <div className="glass-strong flex items-center gap-0.5 rounded-full p-1.5">
           <span className="hidden select-none pl-2.5 pr-1.5 font-mono text-[9px] uppercase tracking-[0.26em] text-[rgb(var(--text-dim))] sm:block">
             worlds

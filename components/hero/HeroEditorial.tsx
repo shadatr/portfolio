@@ -130,24 +130,22 @@ export default function HeroEditorial() {
       </motion.div>
 
       {/* Muting veils so the type always wins */}
-      <div className="pointer-events-none absolute inset-0 bg-ink-base/35 backdrop-blur-[1.5px]" />
+      <div className="pointer-events-none hero-veil absolute inset-0 bg-ink-base/35 backdrop-blur-[1.5px]" />
       <div className="pointer-events-none absolute inset-0 center-vignette-soft" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink-base/30 via-transparent to-ink-base/85" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pb-24 pt-36 md:px-10 md:pt-40">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-8 flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
+        <div
+          style={{ animationDelay: "0.15s" }}
+          className="hero-rise mb-8 flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inset-0 rounded-full bg-cyan-neon" />
             <span className="absolute inset-0 animate-ping rounded-full bg-cyan-neon opacity-50" />
           </span>
           software engineer · Istanbul
-        </motion.div>
+        </div>
 
         {/* Headline — each line rises out of a mask */}
         <motion.h1
@@ -156,15 +154,9 @@ export default function HeroEditorial() {
         >
           {LINES.map((line, i) => (
             <span key={line.text} className="block overflow-hidden pb-[0.06em] -mb-[0.06em]">
-              <motion.span
-                initial={{ y: "112%", rotate: 4 }}
-                animate={{ y: "0%", rotate: 0 }}
-                transition={{
-                  duration: 1,
-                  delay: 0.25 + i * 0.13,
-                  ease: [0.22, 0.9, 0.24, 1],
-                }}
-                className="block origin-left"
+              <span
+                style={{ animationDelay: `${0.25 + i * 0.13}s` }}
+                className="hero-line block origin-left"
               >
                 {line.italic ? (
                   <>
@@ -183,39 +175,33 @@ export default function HeroEditorial() {
                 ) : (
                   line.text
                 )}
-              </motion.span>
+              </span>
             </span>
           ))}
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-8 font-editorial text-xl italic text-text-mid md:mt-10 md:text-3xl"
+        <p
+          style={{ animationDelay: "0.7s" }}
+          className="hero-rise mt-8 font-editorial text-xl italic text-text-mid md:mt-10 md:text-3xl"
         >
           From scratch to production — on whatever stack the problem needs.
-        </motion.p>
+        </p>
 
         <div className="mt-10 grid grid-cols-1 items-end gap-10 md:mt-14 md:grid-cols-[1.4fr_1fr]">
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.85 }}
-            className="max-w-xl text-md leading-[1.8] text-text-mid md:text-lg"
+          <p
+            style={{ animationDelay: "0.85s" }}
+            className="hero-rise max-w-xl text-md leading-[1.8] text-text-mid md:text-lg"
           >
             Engineer at Bull Teknoloji, working on real-time trading
             infrastructure. Shipped{" "}
             <span className="text-text-high">Tummie, Let&apos;s Note AI and
             Moonshot</span>{" "}
             solo — design to deployment.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            className="flex flex-wrap justify-start gap-3 md:justify-end"
+          <div
+            style={{ animationDelay: "1s" }}
+            className="hero-rise flex flex-wrap justify-start gap-3 md:justify-end"
           >
             <MagneticButton href="#work">
               View work <span aria-hidden>↗</span>
@@ -223,16 +209,14 @@ export default function HeroEditorial() {
             <MagneticButton href="#contact" variant="ghost">
               Get in touch
             </MagneticButton>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
-        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim"
+      <div
+        style={{ animationDelay: "1.4s" }}
+        className="hero-fade absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 font-mono text-xxsm uppercase tracking-[0.3em] text-text-dim"
       >
         <span>scroll</span>
         <motion.span
@@ -240,7 +224,7 @@ export default function HeroEditorial() {
           transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           className="w-px bg-gradient-to-b from-cyan-neon/70 to-transparent"
         />
-      </motion.div>
+      </div>
     </section>
   );
 }

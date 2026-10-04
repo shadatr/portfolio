@@ -44,7 +44,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden border-t border-ink-line/60 py-40 md:py-64"
+      className="relative overflow-hidden border-t border-ink-line/60 pt-28 pb-28 md:pt-40 md:pb-32"
     >
       <div className="absolute inset-0 aurora pointer-events-none" />
       <div className="absolute inset-0 grain pointer-events-none" />
@@ -53,7 +53,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.4 }}
           className="inline-flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
         >
@@ -64,7 +64,7 @@ export default function Contact() {
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.7, delay: 0.05 }}
           className="mt-6 font-display font-bold text-text-high text-[52px] md:text-[110px] leading-[0.9] tracking-[-0.03em] [text-wrap:balance]"
         >
@@ -78,7 +78,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-16 md:mt-24"
         >
@@ -113,7 +113,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5, delay: 0.25 }}
           className="mt-14 flex items-center justify-center gap-3"
         >
@@ -133,20 +133,20 @@ export default function Contact() {
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mt-10 font-mono text-xxsm uppercase tracking-[0.26em] text-text-dim"
         >
-          Istanbul · UTC+3 · full-time / freelance / remote
+          Istanbul · UTC+3 · open to full-time · freelance · remote
         </motion.p>
 
         {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-28 flex flex-col items-center justify-between gap-3 border-t border-ink-line/60 pt-8 font-mono text-xxsm uppercase tracking-[0.22em] text-text-dim md:flex-row"
+          className="mt-20 flex flex-col items-center justify-between gap-3 border-t border-ink-line/60 pt-8 font-mono text-xxsm uppercase tracking-[0.22em] text-text-dim md:flex-row"
         >
           <span>© {new Date().getFullYear()} Shada Daab</span>
           <span className="font-editorial italic normal-case tracking-normal text-text-mid">

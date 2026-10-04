@@ -37,7 +37,7 @@ export default function AlternatingLayout({ study }: { study: CaseStudy }) {
                 <motion.div
                   initial={{ opacity: 0, x: reverse ? 30 : -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-120px" }}
+                  viewport={{ once: true, margin: "0px 0px 15% 0px" }}
                   transition={{ duration: 0.7 }}
                 >
                   <Placeholder fit="contain"
@@ -51,7 +51,7 @@ export default function AlternatingLayout({ study }: { study: CaseStudy }) {
                 <motion.div
                   initial={{ opacity: 0, x: reverse ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-120px" }}
+                  viewport={{ once: true, margin: "0px 0px 15% 0px" }}
                   transition={{ duration: 0.7, delay: 0.05 }}
                   className="flex flex-col gap-5 max-w-xl"
                 >

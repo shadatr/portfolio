@@ -33,7 +33,7 @@ export default function ProjectsBento() {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "0px 0px 15% 0px" }}
       className="flex flex-col gap-5 md:gap-6"
     >
       <motion.div variants={item}>

@@ -42,7 +42,7 @@ export default function ExperienceTimeline() {
                 key={exp.slug}
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "0px 0px 15% 0px" }}
                 transition={{ duration: 0.6, delay: idx * 0.08 }}
                 className="relative"
               >

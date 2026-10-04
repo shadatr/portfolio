@@ -31,7 +31,7 @@ export default function Terminal({
   speed = 14,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "0px 0px 15% 0px" });
   const [step, setStep] = useState(0);
   const [partial, setPartial] = useState("");
 
@@ -39,6 +39,11 @@ export default function Terminal({
     if (!inView) return;
     if (step >= lines.length) return;
     const target = lines[step].text;
+    // Like a real shell: commands are typed, output prints at once.
+    if (lines[step].type === "out") {
+      const t = setTimeout(() => setStep((s) => s + 1), 90);
+      return () => clearTimeout(t);
+    }
     let i = 0;
     setPartial("");
     const id = setInterval(() => {

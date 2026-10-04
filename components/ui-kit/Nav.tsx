@@ -63,7 +63,11 @@ export default function Nav() {
             <Link
               key={l.href}
               href={isHome ? l.href.replace("/", "") : l.href}
-              className="text-xxsm md:text-xsm font-mono uppercase tracking-[0.18em] px-2 md:px-3 py-2 rounded-full text-text-mid hover:text-text-high transition-colors duration-500"
+              // On phones the logo already links home, so "Home" is dropped to fit.
+              className={cn(
+                "text-xxsm md:text-xsm font-mono uppercase tracking-[0.1em] md:tracking-[0.18em] px-1.5 md:px-3 py-2 rounded-full text-text-mid hover:text-text-high transition-colors duration-500",
+                l.label === "Home" && "hidden md:inline-block"
+              )}
               data-cursor="hover"
             >
               {l.label}

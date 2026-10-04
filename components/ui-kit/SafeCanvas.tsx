@@ -7,9 +7,13 @@ type CanvasProps = React.ComponentProps<typeof Canvas>;
 
 // Probe once per page load — browsers with hardware acceleration off (or
 // blocklisted GPUs) can't create a WebGL context, and three throws on mount.
+// The lite-mode script in app/layout.tsx has usually answered this already.
 let webglSupport: boolean | null = null;
 function hasWebGL(): boolean {
   if (webglSupport !== null) return webglSupport;
+  if (document.documentElement.classList.contains("lite")) {
+    return (webglSupport = false);
+  }
   try {
     const canvas = document.createElement("canvas");
     const gl =

@@ -31,7 +31,7 @@ export default function ProjectSpotlight() {
 
   const coverScale = useTransform(p, [0, 0.55], [0.86, 1]);
   const coverY = useTransform(p, [0, 0.55], [70, 0]);
-  const headOpacity = useTransform(p, [0, 0.18, 0.85, 1], [0, 1, 1, 0]);
+  const headOpacity = useTransform(p, [0, 0.1], [0.5, 1]);
   const ctaOpacity = useTransform(p, [0.66, 0.8], [0, 1]);
   const ctaY = useTransform(p, [0.66, 0.8], [14, 0]);
 
@@ -43,7 +43,7 @@ export default function ProjectSpotlight() {
   ];
 
   return (
-    <section ref={ref} aria-label="Flagship project" className="relative h-[260vh]">
+    <section ref={ref} aria-label="Flagship project" className="relative h-[200vh]">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 grain pointer-events-none" />
 

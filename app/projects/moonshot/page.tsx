@@ -1,9 +1,10 @@
-"use client";
-
 import React from "react";
 import CaseStudyView from "@/components/case-study/CaseStudyView";
 import Terminal from "@/components/ui-kit/Terminal";
 import { moonshotStudy } from "@/lib/case-studies";
+import { studyMetadata } from "@/lib/seo";
+
+export const metadata = studyMetadata(moonshotStudy, "/projects/moonshot");
 
 export default function Page() {
   return (
@@ -27,11 +28,11 @@ export default function Page() {
               { type: "out", text: "[info] subscribing to MoonCVVNZFSYkqNXP6bxHLPL6QQJiMagDL3qcqUQTrG", color: "cyan" },
               { type: "out", text: "[info] websocket connected · commitment=processed", color: "cyan" },
               { type: "out", text: "[event] CreateEvent  mint=BkvxX...9p2 sender=7nKq...vQ", color: "violet" },
-              { type: "out", text: "[fetch] metadata uri=https://... name=DOGE2 ticker=DOGE2", color: "default" },
+              { type: "out", text: "[fetch] metadata uri=ipfs://QmT7x…f2Wd name=DOGE2 ticker=DOGE2", color: "default" },
               { type: "out", text: "[fetch] prior_mints=4 (sender has shipped 4 tokens before)", color: "default" },
               { type: "out", text: "[discord] ✓ posted to #moonshot · latency 1.8s", color: "green" },
               { type: "out", text: "[event] CreateEvent  mint=2cKsW...XfY sender=Fr8L...bb", color: "violet" },
-              { type: "out", text: "[fetch] metadata uri=https://... name=PEPE-XL ticker=PEPEXL", color: "default" },
+              { type: "out", text: "[fetch] metadata uri=ipfs://QmZ4k…9pLs name=PEPE-XL ticker=PEPEXL", color: "default" },
               { type: "out", text: "[discord] ✓ posted to #moonshot · latency 2.1s", color: "green" },
               { type: "cmd", text: "" },
             ]}

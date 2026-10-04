@@ -36,7 +36,7 @@ export default function BlogContentLayout({ study }: { study: CaseStudy }) {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.4 }}
           className="flex flex-wrap items-center gap-4 font-mono text-xxsm uppercase tracking-[0.22em] text-text-dim border-y border-ink-line/60 py-3"
         >
@@ -66,7 +66,7 @@ export default function BlogContentLayout({ study }: { study: CaseStudy }) {
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6 }}
           className="mt-24 pt-12 border-t border-ink-line flex flex-col items-center gap-3 text-center"
         >
@@ -104,7 +104,7 @@ function Chapter({
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.5 }}
         className="flex items-center gap-3 mb-6"
       >
@@ -127,7 +127,7 @@ function Chapter({
       <motion.h2
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.6, delay: 0.05 }}
         className="font-display font-bold text-text-high text-3xl md:text-5xl leading-[1.05] tracking-[-0.015em] mb-8"
       >
@@ -138,7 +138,7 @@ function Chapter({
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className={cn(
           "text-md md:text-lg text-text-mid leading-[1.75]",
@@ -153,7 +153,7 @@ function Chapter({
         <motion.figure
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6 }}
           className="my-10 relative pl-6 md:pl-8"
         >
@@ -172,7 +172,7 @@ function Chapter({
         <motion.ul
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="mt-8 space-y-3 text-text-mid leading-relaxed border-l border-ink-line pl-5"
         >
@@ -194,7 +194,7 @@ function Chapter({
       <motion.figure
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: "0px 0px 15% 0px" }}
         transition={{ duration: 0.7, delay: 0.2 }}
         className={cn(
           "mt-12",

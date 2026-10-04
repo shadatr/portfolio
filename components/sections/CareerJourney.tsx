@@ -11,7 +11,7 @@ type Milestone = {
   href?: string;
 };
 
-// One column, four beats. Each milestone is a year, a title, and one or two
+// One column, five beats. Each milestone is a year, a title, and one or two
 // sentences — nothing else competes for attention. The "present tense" lives
 // in the NowRunning section that follows.
 const MILESTONES: Milestone[] = [
@@ -32,6 +32,12 @@ const MILESTONES: Milestone[] = [
     href: "/experience/oktan",
   },
   {
+    year: "2026",
+    title: "Graduation project — Aidventure",
+    body: "An AI travel planner built with one teammate: spaCy NER, Mistral-streamed itineraries, and live flight, hotel and weather data.",
+    href: "/projects/aidventure",
+  },
+  {
     year: "Now",
     title: "Software Engineer at Bull Teknoloji",
     body: "Leading NanoShield end-to-end and building across FLARE — real-time trading infrastructure in production.",
@@ -43,7 +49,7 @@ export default function CareerJourney() {
   return (
     <section
       id="experience"
-      className="relative py-36 md:py-56 overflow-hidden border-t border-ink-line/60"
+      className="relative py-24 md:py-36 overflow-hidden border-t border-ink-line/60"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
 
@@ -53,7 +59,7 @@ export default function CareerJourney() {
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.4 }}
             className="flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon"
           >
@@ -63,7 +69,7 @@ export default function CareerJourney() {
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 0.6, delay: 0.05 }}
             className="mt-4 font-display font-bold text-text-high leading-[0.95] tracking-[-0.02em] text-[44px] md:text-[80px] [text-wrap:balance]"
           >
@@ -81,7 +87,7 @@ export default function CareerJourney() {
               <motion.div
                 initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "0px 0px 15% 0px" }}
                 transition={{ duration: 0.7, delay: i * 0.05, ease: [0.32, 0.72, 0, 1] }}
                 className="group relative pl-6 md:pl-8"
               >

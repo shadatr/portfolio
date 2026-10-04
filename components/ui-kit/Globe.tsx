@@ -112,10 +112,38 @@ function Wireframe() {
   );
 }
 
+// Static wireframe shown when WebGL is unavailable (lite mode).
+function FlatGlobe() {
+  const line = "rgb(var(--accent-primary) / 0.35)";
+  return (
+    <svg viewBox="-110 -110 220 220" className="h-full w-full" aria-hidden>
+      <circle r="100" fill="rgb(var(--ink-surface) / 0.6)" stroke={line} />
+      {[-60, -30, 0, 30, 60].map((lat) => {
+        const y = -100 * Math.sin((lat * Math.PI) / 180);
+        const rx = 100 * Math.cos((lat * Math.PI) / 180);
+        return <ellipse key={lat} cy={y} rx={rx} ry={rx * 0.18} fill="none" stroke={line} />;
+      })}
+      {[20, 50, 80].map((rx) => (
+        <ellipse key={rx} rx={rx} ry="100" fill="none" stroke={line} />
+      ))}
+      {/* Istanbul */}
+      <circle cx="18" cy="-52" r="9" fill="#FBBF24" opacity="0.25" />
+      <circle cx="18" cy="-52" r="4" fill="#FBBF24" />
+    </svg>
+  );
+}
+
 export default function Globe({ className }: { className?: string }) {
   return (
     <div className={className}>
       <SafeCanvas
+        fallback={
+          <div className="flex h-full w-full items-center justify-center">
+            <div className="aspect-square h-[70%] max-w-full">
+              <FlatGlobe />
+            </div>
+          </div>
+        }
         camera={{ position: [0, 0.4, 4.6], fov: 45 }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: true }}

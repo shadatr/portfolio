@@ -61,7 +61,7 @@ export default function Stats() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "0px 0px 15% 0px" }}
               transition={{ duration: 0.6 }}
               className="font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon flex items-center gap-3"
             >
@@ -72,7 +72,7 @@ export default function Stats() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "0px 0px 15% 0px" }}
               transition={{ duration: 0.7, delay: 0.05 }}
               className="mt-6 flex items-baseline gap-3"
             >
@@ -87,7 +87,7 @@ export default function Stats() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "0px 0px 15% 0px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-4 max-w-md text-md text-text-mid leading-relaxed"
             >
@@ -106,7 +106,7 @@ export default function Stats() {
                 key={m.label}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "0px 0px 15% 0px" }}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
                 className="flex items-baseline justify-between gap-4 group"
               >

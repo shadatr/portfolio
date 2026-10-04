@@ -10,7 +10,8 @@ export default function CustomCursor() {
   useEffect(() => {
     const canHover =
       window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!canHover) return;
+    const lite = document.documentElement.classList.contains("lite");
+    if (!canHover || lite) return;
     setEnabled(true);
     document.body.classList.add("has-custom-cursor");
 

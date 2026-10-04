@@ -27,7 +27,7 @@ export type ExperienceItem = {
 };
 
 // Order matters: projects[0] is the featured build — it gets the big bento
-// slot and the pinned Spotlight section.
+// slot and the pinned Spotlight section. The rest run newest first.
 export const projects: Project[] = [
   {
     slug: "tummie",
@@ -41,6 +41,19 @@ export const projects: Project[] = [
     accent: "violet",
     href: "/projects/tummie",
     external: { label: "tummie.app", href: "https://tummie.app/" },
+  },
+  {
+    slug: "aidventure",
+    name: "Aidventure",
+    tagline: "AI travel planner",
+    oneLiner:
+      "An AI trip planner that turns a conversation into a complete travel plan — spaCy NER extracts destinations, dates and budget; Mistral streams the itinerary; real flights, hotels and weather come from live APIs.",
+    role: "Graduation project · 2-person team — AI chat, NER, LLM, auth, plans, dashboard",
+    year: "2026",
+    stack: ["Next.js 14", "FastAPI", "PostgreSQL", "Mistral", "spaCy", "scikit-learn"],
+    accent: "cyan",
+    href: "/projects/aidventure",
+    external: { label: "GitHub", href: "https://github.com/shadatr/aidventure" },
   },
   {
     slug: "lets-note",
@@ -67,19 +80,6 @@ export const projects: Project[] = [
     accent: "mint",
     href: "/projects/moonshot",
     external: { label: "GitHub", href: "https://github.com/shadatr/moonshot-monitor" },
-  },
-  {
-    slug: "aidventure",
-    name: "Aidventure",
-    tagline: "AI travel planner",
-    oneLiner:
-      "An AI trip planner that turns a conversation into a complete travel plan — spaCy NER extracts destinations, dates and budget; Mistral streams the itinerary; real flights, hotels and weather come from live APIs.",
-    role: "Graduation project · 2-person team — AI chat, NER, LLM, auth, plans, dashboard",
-    year: "2026",
-    stack: ["Next.js 14", "FastAPI", "PostgreSQL", "Mistral", "spaCy", "scikit-learn"],
-    accent: "cyan",
-    href: "/projects/aidventure",
-    external: { label: "GitHub", href: "https://github.com/shadatr/aidventure" },
   },
 ];
 

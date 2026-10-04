@@ -115,7 +115,7 @@ export default function CaseStudyHeader({ study }: { study: CaseStudy }) {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6 }}
           className="mt-12 text-lg md:text-xl text-text-high max-w-3xl leading-relaxed"
         >

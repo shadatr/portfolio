@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-40 md:py-64 overflow-hidden border-t border-ink-line/60"
+      className="relative py-28 md:py-40 overflow-hidden border-t border-ink-line/60"
     >
       <div className="absolute inset-0 grain pointer-events-none" />
 
@@ -16,7 +16,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.4 }}
           className="flex items-center gap-3 font-mono text-xxsm uppercase tracking-[0.3em] text-cyan-neon mb-10"
         >
@@ -28,7 +28,7 @@ export default function About() {
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.7 }}
           className="font-display font-bold text-text-high leading-[0.95] tracking-[-0.02em] text-[44px] md:text-[88px] max-w-4xl"
         >
@@ -43,7 +43,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-12 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 items-start"
         >
@@ -62,7 +62,7 @@ export default function About() {
               ["Based", "Istanbul, TR"],
               ["Role", "Software engineer"],
               ["Speaks", "EN · TR · AR"],
-              ["Mode", "Hybrid · Remote"],
+              ["Open to", "Full-time · Freelance · Remote"],
             ].map(([k, v]) => (
               <div key={k} className="flex flex-col">
                 <span className="font-mono text-xxsm uppercase tracking-[0.22em] text-text-dim">
@@ -80,7 +80,7 @@ export default function About() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.6 }}
           className="mt-24 md:mt-32 max-w-2xl font-editorial italic text-text-high text-2xl md:text-3xl leading-[1.3]"
         >
